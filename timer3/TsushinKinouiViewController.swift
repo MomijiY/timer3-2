@@ -8,14 +8,13 @@
 
 import UIKit
 
-class NotificationViewController: UIViewController {
+class TsushinKinouViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
+   
 
     /*
     // MARK: - Navigation

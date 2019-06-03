@@ -345,10 +345,10 @@
             </objects>
             <point key="canvasLocation" x="-343" y="71"/>
         </scene>
-        <!--Add View Controller-->
+        <!--View Controller-->
         <scene sceneID="EQX-BU-Jml">
             <objects>
-                <viewController id="6YM-ng-yeS" customClass="AddViewController" sceneMemberID="viewController">
+                <viewController id="6YM-ng-yeS" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fga-0R-by8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -564,7 +564,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kd8-uU-md2"/>
+        <segue reference="AwM-oU-W8Q"/>
         <segue reference="Ze5-St-dQn"/>
     </inferredMetricsTieBreakers>
 </document>
