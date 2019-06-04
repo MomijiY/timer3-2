@@ -64,9 +64,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8O-4A-0sO">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8O-4A-0sO">
                                 <rect key="frame" x="163" y="466" width="51" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <state key="normal" title="start"/>
                                 <connections>
@@ -192,6 +191,8 @@
                         <constraints>
                             <constraint firstItem="NOi-et-orP" firstAttribute="bottom" secondItem="eis-b7-DtX" secondAttribute="bottom" id="0Pb-8a-aIa"/>
                             <constraint firstItem="NOi-et-orP" firstAttribute="trailing" secondItem="eis-b7-DtX" secondAttribute="trailing" id="4rL-Cg-VUk"/>
+                            <constraint firstItem="aRD-UV-PCb" firstAttribute="leading" secondItem="eis-b7-DtX" secondAttribute="leading" constant="99" id="5FJ-Ln-Rc9"/>
+                            <constraint firstItem="eis-b7-DtX" firstAttribute="bottom" secondItem="aRD-UV-PCb" secondAttribute="bottom" constant="159" id="5nW-RA-OnC"/>
                             <constraint firstItem="NOi-et-orP" firstAttribute="leading" secondItem="eis-b7-DtX" secondAttribute="leading" id="7Gy-bP-CiJ"/>
                             <constraint firstItem="fhE-zv-vTA" firstAttribute="top" secondItem="aRD-UV-PCb" secondAttribute="bottom" id="86t-hg-qz6"/>
                             <constraint firstItem="fhE-zv-vTA" firstAttribute="bottom" secondItem="eis-b7-DtX" secondAttribute="bottom" id="BPc-cV-43h"/>
@@ -202,8 +203,10 @@
                             <constraint firstItem="fhE-zv-vTA" firstAttribute="top" secondItem="aRD-UV-PCb" secondAttribute="bottom" id="dnR-sF-OND"/>
                             <constraint firstItem="eis-b7-DtX" firstAttribute="trailing" secondItem="aRD-UV-PCb" secondAttribute="trailing" id="eaB-gw-RMn"/>
                             <constraint firstItem="fhE-zv-vTA" firstAttribute="trailing" secondItem="eis-b7-DtX" secondAttribute="trailing" id="h1X-Fx-Yif"/>
+                            <constraint firstItem="eis-b7-DtX" firstAttribute="bottom" secondItem="aRD-UV-PCb" secondAttribute="bottom" constant="159" id="jHc-FT-WCa"/>
                             <constraint firstItem="fhE-zv-vTA" firstAttribute="leading" secondItem="eis-b7-DtX" secondAttribute="leading" id="pGT-vL-uIK"/>
                             <constraint firstItem="eis-b7-DtX" firstAttribute="trailing" secondItem="fhE-zv-vTA" secondAttribute="trailing" id="rFF-qC-3pd"/>
+                            <constraint firstItem="v8O-4A-0sO" firstAttribute="leading" secondItem="aRD-UV-PCb" secondAttribute="trailing" constant="2" id="xRC-vS-3iw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eis-b7-DtX"/>
                     </view>

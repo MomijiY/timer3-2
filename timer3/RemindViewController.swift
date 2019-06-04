@@ -226,7 +226,8 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //manual・ページ数入力の時のキーボードの種類ー＞数字のみ
+        manualfield.keyboardType = UIKeyboardType.numberPad
         
         // PickerView のサイズと位置
         pickerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300)
@@ -267,6 +268,11 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         teisyutubutton.isHidden = true
         timepicker.isHidden = true
     
+    }
+    
+    //manual・ページ数入力の時キーボードをしまう方法ー＞text field 以外の部分をタッチ
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     @IBOutlet weak var label: UILabel!                //タイマーのラベル(30)
