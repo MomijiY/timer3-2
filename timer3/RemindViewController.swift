@@ -240,23 +240,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        // Label 位置はPickerViewより150上に設定、高さを２行表示分とる
-        let yPosition = pickerView.frame.origin.y
-        label.frame = CGRect(x: 0, y: yPosition - 100, width: self.view.frame.width, height: 100)
         
-        // ラベルを1行表示
-        label.numberOfLines = 1
-        label.text = "30"
-        // フォントサイズを大きく
-        label.font = UIFont.systemFont(ofSize: 36)
-        // テキストを中央寄せにする
-        label.textAlignment = NSTextAlignment.center
-        
-        
-        self.view.addSubview(pickerView)
-        self.view.addSubview(label)
-        
-       label.isHidden = true
         reset.isHidden = true
         start.isHidden = true
         stop.isHidden = true
@@ -275,7 +259,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.view.endEditing(true)
     }
     
-    @IBOutlet weak var label: UILabel!                //タイマーのラベル(30)
+    
     @IBOutlet weak var reset: UIButton!               //ストップウォッチ（リセット）
     @IBOutlet weak var start: UIButton!               //ストップウォッチ（スタート）
     @IBOutlet weak var stop: UIButton!                //ストップウォッチ（ストップ）
@@ -335,7 +319,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         switch scSegment.selectedSegmentIndex {
         case 0:
-            label.isHidden = true
+            
             reset.isHidden = true
             start.isHidden = true
             stop.isHidden = true
@@ -356,7 +340,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
             
         case 1:
-            label.isHidden = true
+            
             reset.isHidden = false
             start.isHidden = false
             stop.isHidden = false
@@ -375,7 +359,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             timepicker.isHidden = true
             
         case 2:
-            label.isHidden = true
+            
             reset.isHidden = true
             start.isHidden = true
             stop.isHidden = true

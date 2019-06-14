@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		79647786224878100047BA40 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79647785224878100047BA40 /* RemindViewController.swift */; };
-		79CEB2B622A514C3006A6F5A /* TsushinKinouiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CEB2B522A514C3006A6F5A /* TsushinKinouiViewController.swift */; };
+		7985E9EB22B3B6E600A5D98A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7985E9EA22B3B6E600A5D98A /* FirstViewController.swift */; };
+		7985E9ED22B3CBBA00A5D98A /* testsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7985E9EC22B3CBBA00A5D98A /* testsViewController.swift */; };
 		79FB7B03224C51CE00F0889A /* haikei.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B02224C51CE00F0889A /* haikei.png */; };
 		79FB7B07224F074900F0889A /* Aleart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B06224F074900F0889A /* Aleart.mp3 */; };
 		79FB7B0E224F255500F0889A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B0C224F255500F0889A /* Main.storyboard */; };
@@ -44,7 +45,8 @@
 
 /* Begin PBXFileReference section */
 		79647785224878100047BA40 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
-		79CEB2B522A514C3006A6F5A /* TsushinKinouiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TsushinKinouiViewController.swift; sourceTree = "<group>"; };
+		7985E9EA22B3B6E600A5D98A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		7985E9EC22B3CBBA00A5D98A /* testsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testsViewController.swift; sourceTree = "<group>"; };
 		79FB7B02224C51CE00F0889A /* haikei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haikei.png; sourceTree = "<group>"; };
 		79FB7B06224F074900F0889A /* Aleart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Aleart.mp3; sourceTree = "<group>"; };
 		79FB7B0D224F255500F0889A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,7 +127,8 @@
 				79FD914C2249993C0045C2E6 /* TableViewController.swift */,
 				79FD914E22499E4B0045C2E6 /* PickerViewController.swift */,
 				79647785224878100047BA40 /* RemindViewController.swift */,
-				79CEB2B522A514C3006A6F5A /* TsushinKinouiViewController.swift */,
+				7985E9EA22B3B6E600A5D98A /* FirstViewController.swift */,
+				7985E9EC22B3CBBA00A5D98A /* testsViewController.swift */,
 				79FB7B0C224F255500F0889A /* Main.storyboard */,
 				79FF9988221183A000C912A4 /* Assets.xcassets */,
 				79FF998A221183A000C912A4 /* LaunchScreen.storyboard */,
@@ -293,8 +296,9 @@
 			files = (
 				79FD914F22499E4B0045C2E6 /* PickerViewController.swift in Sources */,
 				79FF9984221183A000C912A4 /* ViewController.swift in Sources */,
-				79CEB2B622A514C3006A6F5A /* TsushinKinouiViewController.swift in Sources */,
+				7985E9ED22B3CBBA00A5D98A /* testsViewController.swift in Sources */,
 				79FF9982221183A000C912A4 /* AppDelegate.swift in Sources */,
+				7985E9EB22B3B6E600A5D98A /* FirstViewController.swift in Sources */,
 				79FD914D2249993C0045C2E6 /* TableViewController.swift in Sources */,
 				79647786224878100047BA40 /* RemindViewController.swift in Sources */,
 			);
@@ -474,7 +478,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG32J57MBX;
 				INFOPLIST_FILE = timer3/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -493,7 +497,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG32J57MBX;
 				INFOPLIST_FILE = timer3/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
