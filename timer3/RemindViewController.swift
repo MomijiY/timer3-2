@@ -9,8 +9,81 @@
 
 import UIKit
 import AVFoundation
+import Firebase
 
-class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
+class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate {
+    
+    var database: Firestore!
+    
+    var saveData: UserDefaults = UserDefaults.standard
+    
+    @IBOutlet weak var dateField: UITextField!
+    
+    var datePicker: UIDatePicker = UIDatePicker()
+    
+    
+    @objc func done() {
+        dateField.endEditing(true)
+        
+        
+        let formatter = DateFormatter()
+        
+        
+        formatter.dateFormat = "h時間m分"
+        
+        
+        dateField.text = "\(formatter.string(from: datePicker.date))"
+        
+        
+        
+    }
+    
+    
+    
+    @IBAction func saveMemo() {
+        print(dateField.text!)
+        
+        saveData.set(dateField.text, forKey: "Text")
+        saveData.set(manualfield.text, forKey: "Page")
+        saveData.set(manuallabel3.text, forKey: "Subject")
+        saveData.set(labelStopwatch.text, forKey: "Stopwatch")
+        
+        let alert: UIAlertController = UIAlertController(title: "OK", message: "記録の保存が完了しました", preferredStyle: .alert)
+        
+        alert.addAction(
+            UIAlertAction(title: "OK", style: .default, handler: { action in
+                
+                self.navigationController?.popViewController(animated: true)
+            }
+            )
+        )
+        present(alert, animated: true, completion: nil)
+        
+        let data = [
+            "text": dateField.text!,
+            "page": manualfield.text!,
+            "subject": manuallabel3.text!
+            
+        ] as [String: Any]
+        
+        database.collection("data").document("example").setData(data){err in
+            if let err = err {
+                print("Error writiing document: \(err)")
+            }else {
+                print("Document successfully wriitten!")
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return  true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     //スクリーンサイズの取得
     let screenSize = UIScreen.main.bounds.size
@@ -70,6 +143,8 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         setAudioPlayer(soundName: "start", type: "mp3")
         audioPlayer.play()
         
+        timepicker.isHidden = true
+        timerlabel.isHidden = false
     }
     
     
@@ -82,6 +157,9 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         seconds = 30
         setAudioPlayer(soundName: "stop", type: "mp3")
         audioPlayer.play()
+        
+        timepicker.isHidden = false
+        timerlabel.isHidden = true
         
     }
     
@@ -110,7 +188,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
 
-    @IBOutlet weak var scSegment: UISegmentedControl!  //viewのセグメントコントロール
+    @IBOutlet weak var scSegment: UISegmentedControl!  //セグメントコントロール
     
     var stopwatchtimer = Timer()                 // Timerクラス
     var startTime: TimeInterval = 0     // Startボタンを押した時刻
@@ -123,8 +201,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var buttonStop: UIButton!    // Stopボタン
     @IBOutlet weak var buttonReset: UIButton!   // Resetボタン
     
-    @IBAction func Sharebutton(_ sender: Any) {  //共有ボタン
-    }
+    
     // Startボタンを押した時の処理
     @IBAction func tapStart() {
         
@@ -186,46 +263,65 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    @IBAction func showActivityView() {
-        let activityItems: Array<Any> = ["aaa"]
-        
-        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-        
-        let excludedActivityTypes: Array<UIActivity.ActivityType> = [
-        
-            UIActivity.ActivityType.postToFlickr,
-            UIActivity.ActivityType.postToTencentWeibo
-        ]
-        activityViewController.excludedActivityTypes = excludedActivityTypes
-        
-        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
-            
-            guard completed else {return}
-            
-            switch activityType {
-            case UIActivity.ActivityType.postToTwitter:
-                print("Tweeted")
-            case UIActivity.ActivityType.print:
-                print("Printed")
-            case UIActivity.ActivityType.saveToCameraRoll:
-                print("Saved to Camera Roll")
-            default:
-                print("Done")
-            }
-        }
-        
-        self.present(activityViewController, animated: true, completion: nil)
-    }
+//    シェアボタン
+//    @IBAction func showActivityView() {
+//        let activityItems: Array<Any> = ["aaa"]
+//
+//        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+//
+//        let excludedActivityTypes: Array<UIActivity.ActivityType> = [
+//
+//            UIActivity.ActivityType.postToFlickr,
+//            UIActivity.ActivityType.postToTencentWeibo
+//        ]
+//        activityViewController.excludedActivityTypes = excludedActivityTypes
+//
+//        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
+//
+//            guard completed else {return}
+//
+//            switch activityType {
+//            case UIActivity.ActivityType.postToTwitter:
+//                print("Tweeted")
+//            case UIActivity.ActivityType.print:
+//                print("Printed")
+//            case UIActivity.ActivityType.saveToCameraRoll:
+//                print("Saved to Camera Roll")
+//            default:
+//                print("Done")
+//            }
+//        }
+//
+//        self.present(activityViewController, animated: true, completion: nil)
+//    }
+//    シェアボタン
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        database = Firestore.firestore()
+        
+        // ピッカー設定
+        datePicker.datePickerMode = UIDatePicker.Mode.countDownTimer
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.locale = Locale.current
+        dateField.inputView = datePicker
+        
+        // 決定バーの生成
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        toolbar.setItems([spacelItem, doneItem], animated: true)
+        
+        // インプットビュー設定(紐づいているUITextfieldへ代入)
+        dateField.inputView = datePicker
+        dateField.inputAccessoryView = toolbar
+        
+        dateField.text = saveData.object(forKey: "Text") as? String
+        manuallabel3.text = saveData.object(forKey: "Subject") as? String
+        manualfield.text = saveData.object(forKey: "Page") as? String
         //manual・ページ数入力の時のキーボードの種類ー＞数字のみ
         manualfield.keyboardType = UIKeyboardType.numberPad
         
@@ -240,16 +336,15 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        
+        dateField.isHidden = false
         reset.isHidden = true
         start.isHidden = true
         stop.isHidden = true
         timerstart.isHidden = true
         timerstop.isHidden = true
-        timerLabel.isHidden = true
-        stopwatchlabel.isHidden = true
-        Sharebutton.isHidden = false
-        teisyutubutton.isHidden = true
+        timerlabel.isHidden = true
+        labelStopwatch.isHidden = true
+        teisyutubutton.isHidden = false
         timepicker.isHidden = true
     
     }
@@ -265,11 +360,11 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var stop: UIButton!                //ストップウォッチ（ストップ）
     @IBOutlet weak var timerstart: UIButton!          //タイマー（スタート）
     @IBOutlet weak var timerstop: UIButton!           //タイマー（ストップ）
-    @IBOutlet weak var stopwatchlabel: UILabel!       //ストップウォッチ（00:00:00）
+    @IBOutlet weak var timerlabel: UILabel!           //タイマー（label）
     @IBOutlet weak var manuallabel: UILabel!          //手動入力(ページ数)
     @IBOutlet weak var manualfield: UITextField!      //手動入力(ページ数のtext field)
-    @IBOutlet weak var manualpicker: UIDatePicker!    //手動入力(時間のピッカー)
-    @IBOutlet weak var Sharebutton: UIButton!         //共有ボタン
+    
+    
     @IBOutlet weak var teisyutubutton: UIButton!      //提出ボタン
     @IBOutlet weak var timepicker: UIDatePicker!    //タイマーピッカー
   
@@ -282,9 +377,9 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func stopbutton2(_ sender: Any) {    //ストップウォッチ
     }
     
-    @IBOutlet weak var timerLabel: UILabel!       //ストップウォッチ
-    
     @IBAction func StartButton(_ sender: Any) {   //タイマー
+        timepicker.isHidden = true
+        timerlabel.isHidden = false
     }
     
     @IBAction func StopButton(_ sender: Any) {    //タイマー
@@ -294,8 +389,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var manualsublabel: UILabel!        //教科を表示するラベル（pickerに対応するラベル）
     
     
-    @IBAction func manualpicker(_ sender: Any) {    //時間のpicker
-    }
+
     
     @IBAction func manualfield(_ sender: Any) {     //ページ数のfield
     }
@@ -310,7 +404,11 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func teisyutubutton(_ sender: Any) {   //提出ボタン
     }
     
-    @IBAction func timepicker(_ sender: Any) {
+    @IBAction func timepicker(_ sender: UIDatePicker) {
+        let timerformatter = DateFormatter()
+        timerformatter.dateFormat = "hh:mm:ss"
+        
+        timerlabel.text = timerformatter.string(from: sender.date)
     }
         
     
@@ -325,17 +423,17 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             stop.isHidden = true
             timerstart.isHidden = true
             timerstop.isHidden = true
-            timerLabel.isHidden = true
-            stopwatchlabel.isHidden = true
-            manualpicker.isHidden = false
+            timerlabel.isHidden = true
+            labelStopwatch.isHidden  = true
+            dateField.isHidden = false
             manuallabel.isHidden = true
             manualfield.isHidden = false
             manualpicker2.isHidden = false
             manuallabel1.isHidden = false
             manuallabel3.isHidden = false
             
-            Sharebutton.isHidden = false
-            teisyutubutton.isHidden = true
+            
+            teisyutubutton.isHidden = false
             timepicker.isHidden = true
 
             
@@ -346,15 +444,15 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             stop.isHidden = false
             timerstart.isHidden = true
             timerstop.isHidden = true
-            timerLabel.isHidden = true
-            stopwatchlabel.isHidden = false
-            manualpicker.isHidden = true
+            labelStopwatch.isHidden = false
+            timerlabel.isHidden = true
+            dateField.isHidden = true
             manuallabel.isHidden = true
             manualfield.isHidden = true
             manualpicker2.isHidden = true
             manuallabel1.isHidden = true
             manuallabel3.isHidden = true
-            Sharebutton.isHidden = true
+          
             teisyutubutton.isHidden = false
             timepicker.isHidden = true
             
@@ -365,15 +463,16 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             stop.isHidden = true
             timerstart.isHidden = false
             timerstop.isHidden = false
-            timerLabel.isHidden = false
-            stopwatchlabel.isHidden = true
-            manualpicker.isHidden = true
+            labelStopwatch.isHidden = true
+            timerlabel.isHidden = true
+            dateField.isHidden = true
             manuallabel.isHidden = true
             manualfield.isHidden = true
             manualpicker2.isHidden = true
             manuallabel1.isHidden = true
             manuallabel3.isHidden = true
-            Sharebutton.isHidden = true
+            
+            
             teisyutubutton.isHidden = false
             timepicker.isHidden = false
            
