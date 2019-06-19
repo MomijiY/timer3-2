@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
 class NotificationViewController: UIViewController {
     
+    var  database: Firestore!
+    
+    
     @IBOutlet weak var lookBtn: UIButton!
+    
+    @IBOutlet weak var ntfLabel: UILabel!
+    
+    @IBOutlet weak var kousinbtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,5 +36,18 @@ class NotificationViewController: UIViewController {
         )
     present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func kousinBtn() {
+        database.collection("teacher_data").document("example").getDocument { (snap, error) in
+            if let error = error {
+                fatalError("\(error)")
+                
+            }
+            guard let data = snap?.data() else { return }
+            print(data["teacher_data"]!)
+            
+            self.ntfLabel.text = data["teacher_data"] as? String
+    }
 
+}
 }

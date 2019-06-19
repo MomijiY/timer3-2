@@ -14,8 +14,10 @@ import Firebase
 class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate {
     
     var database: Firestore!
-    
+
     var saveData: UserDefaults = UserDefaults.standard
+    
+    var count: Float = 0.0
     
     @IBOutlet weak var dateField: UITextField!
     
@@ -116,7 +118,6 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         "書道", "道徳", "聖書", "塾", "その他", "プログラミング",
     ]
     
-    var seconds = 30
     var timer = Timer()
     
     var audioPlayer: AVAudioPlayer!
@@ -139,7 +140,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     @IBAction func startbutton(_ sender: Any) {  //タイマーのstartボタン
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         setAudioPlayer(soundName: "start", type: "mp3")
         audioPlayer.play()
         
@@ -154,7 +155,6 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
         timer.invalidate()
-        seconds = 30
         setAudioPlayer(soundName: "stop", type: "mp3")
         audioPlayer.play()
         
@@ -166,25 +166,43 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @objc func updateTimer() {
         
-        if timepicker.countDownDuration == 60  {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        
+        count = count - 1
+        
+        if count == 0.0 {
             timer.invalidate()
-            
-            setAudioPlayer(soundName: "Aleart", type: "mp3")
-            audioPlayer.play()
-            
+            timepicker.isHidden = false
+            timerlabel.isHidden = true
         } else {
-            timepicker.setDate(timepicker.date - 1, animated: true)
+            timerlabel.text = String(format: "%2d:%02d:%02d", hours,minutes,seconds)
+            timepicker.isHidden = true
+            timerlabel.isHidden = false
+            
         }
         
-        func timeString(time:TimeInterval) -> String {
-            
-            let hours = Int(time) / 3600
-            let minutes = Int(time) / 60 % 60
-            let seconds = Int(time) % 60
-            
-            return String(format: "%2d:%02d:%02d", hours,minutes,seconds)
-            
-        }
+        
+//        if timepicker.countDownDuration == 60  {
+//            timer.invalidate()
+//
+//            setAudioPlayer(soundName: "Aleart", type: "mp3")
+//            audioPlayer.play()
+//
+//        } else {
+//            timepicker.setDate(timepicker.date - 1, animated: true)
+//        }
+//
+//        func timeString(time:TimeInterval) -> String {
+//
+//            let hours = Int(time) / 3600
+//            let minutes = Int(time) / 60 % 60
+//            let seconds = Int(time) % 60
+//
+//            return String(format: "%2d:%02d:%02d", hours,minutes,seconds)
+//
+//        }
         
     }
 
@@ -492,23 +510,4 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             
             manuallabel3.text = dataList[row]
             }
-            
-            
-        }
-        
-        
-            
-
-    
-    
-    /*
-     MARK: - Navigation
-
-     In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         Get the new view controller using segue.destination.
-         Pass the selected object to the new view controller.
-    }
-    */
-
-
+}

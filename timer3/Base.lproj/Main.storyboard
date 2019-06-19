@@ -126,15 +126,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-6U-mcn">
-                                <rect key="frame" x="0.0" y="158" width="375" height="216"/>
-                                <date key="date" timeIntervalSinceReferenceDate="575423459.231076">
-                                    <!--2019-03-27 23:50:59 +0000-->
-                                </date>
-                                <connections>
-                                    <action selector="timepicker:" destination="Uxy-8W-h2j" eventType="valueChanged" id="Ylx-KO-TTE"/>
-                                </connections>
-                            </datePicker>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ev9-yt-MLn">
                                 <rect key="frame" x="49" y="251" width="281" height="30"/>
                                 <nil key="textColor"/>
@@ -171,6 +162,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-6U-mcn">
+                                <rect key="frame" x="2" y="150" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="575423459.231076">
+                                    <!--2019-03-27 23:50:59 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="timepicker:" destination="Uxy-8W-h2j" eventType="valueChanged" id="Ylx-KO-TTE"/>
+                                </connections>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -253,46 +253,6 @@
             <point key="canvasLocation" x="-1351.2" y="928.78560719640188"/>
         </scene>
         <!--Notification View Controller-->
-        <scene sceneID="ShJ-62-QaK">
-            <objects>
-                <viewController id="ptm-6t-wwd" customClass="NotificationViewController" customModule="timer3" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="A52-ll-QZe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="お知らせ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MI-vl-0Jr">
-                                <rect key="frame" x="121" y="25" width="130" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1e-Bu-kNv">
-                                <rect key="frame" x="16" y="29" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="戻る"/>
-                                <connections>
-                                    <segue destination="AmK-2O-I7M" kind="presentation" id="Ze5-St-dQn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rda-Ls-5RG">
-                                <rect key="frame" x="149" y="156" width="77" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="詳しく見る"/>
-                                <connections>
-                                    <segue destination="Hnh-f3-pGn" kind="presentation" id="wYw-vF-Eod"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="yW6-fY-mzn"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rgx-p0-fpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-295.19999999999999" y="917.99100449775119"/>
-        </scene>
-        <!--Notification View Controller-->
         <scene sceneID="Zai-58-Jt6">
             <objects>
                 <viewController id="Hnh-f3-pGn" customClass="NotificationViewController" customModule="timer3" customModuleProvider="target" sceneMemberID="viewController">
@@ -307,7 +267,7 @@
                                     <navigationItem title="お知らせ" id="aY2-WE-bgl">
                                         <barButtonItem key="leftBarButtonItem" title="戻る" id="vPB-OK-QnQ">
                                             <connections>
-                                                <segue destination="ptm-6t-wwd" kind="presentation" id="bRs-dZ-J57"/>
+                                                <segue destination="AmK-2O-I7M" kind="presentation" id="W1x-WZ-NHb"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -347,17 +307,27 @@
                                     <action selector="btnLook" destination="Hnh-f3-pGn" eventType="touchUpInside" id="ukg-Ba-ici"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW2-Lu-k5l">
+                                <rect key="frame" x="16" y="432" width="108" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="お知らせを更新"/>
+                                <connections>
+                                    <action selector="kousinBtn" destination="Hnh-f3-pGn" eventType="touchUpInside" id="VcZ-Fi-9Rd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Dfo-FM-WG1"/>
                     </view>
                     <connections>
+                        <outlet property="kousinbtn" destination="gW2-Lu-k5l" id="4Gs-Cd-xfj"/>
                         <outlet property="lookBtn" destination="i52-ju-Apq" id="Opd-6q-dgb"/>
+                        <outlet property="ntfLabel" destination="kFm-ap-ycy" id="tqy-NW-dZf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjK-zJ-xWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-295.19999999999999" y="1785.1574212893554"/>
+            <point key="canvasLocation" x="-343" y="958"/>
         </scene>
         <!--Tests View Controller-->
         <scene sceneID="B1P-SV-0lV">
@@ -513,7 +483,7 @@
                                     <color key="titleColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ptm-6t-wwd" kind="presentation" id="wSx-uR-o3C"/>
+                                    <segue destination="Hnh-f3-pGn" kind="presentation" id="jjz-cO-o1R"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-------------------------------------------------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLQ-uR-m0t">
@@ -686,9 +656,7 @@
         <image name="human.jpeg" width="222" height="204"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wYw-vF-Eod"/>
         <segue reference="AwM-oU-W8Q"/>
-        <segue reference="Ze5-St-dQn"/>
-        <segue reference="bRs-dZ-J57"/>
+        <segue reference="W1x-WZ-NHb"/>
     </inferredMetricsTieBreakers>
 </document>
