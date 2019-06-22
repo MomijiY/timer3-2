@@ -252,6 +252,44 @@
             </objects>
             <point key="canvasLocation" x="-1351.2" y="928.78560719640188"/>
         </scene>
+        <!--Coment View Controller-->
+        <scene sceneID="Kch-KZ-jWd">
+            <objects>
+                <viewController id="JXx-Tj-68x" customClass="comentViewController" customModule="timer3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tz8-TJ-3dM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPF-Q7-TwO">
+                                <rect key="frame" x="16" y="75" width="343" height="343"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgA-FQ-gRe">
+                                <rect key="frame" x="84" y="476" width="108" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="お知らせを更新"/>
+                                <connections>
+                                    <action selector="kousinBtn" destination="Hnh-f3-pGn" eventType="touchUpInside" id="fCO-ma-npW"/>
+                                    <action selector="reroadbtnAc" destination="JXx-Tj-68x" eventType="touchUpInside" id="USA-dM-Zax"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="j8X-ih-a6Q"/>
+                    </view>
+                    <connections>
+                        <outlet property="comentLbl" destination="MPF-Q7-TwO" id="ewc-h1-dNh"/>
+                        <outlet property="reroadbtn" destination="qgA-FQ-gRe" id="GSF-Y4-VFz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g2n-Vu-z3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1330.4000000000001" y="1738.3808095952024"/>
+        </scene>
         <!--Notification View Controller-->
         <scene sceneID="Zai-58-Jt6">
             <objects>
@@ -555,6 +593,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JcD-Xi-taR">
+                                <rect key="frame" x="28" y="575" width="140" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <state key="normal" title="coment">
+                                    <color key="titleColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="JXx-Tj-68x" kind="presentation" id="Nfp-9Y-fB2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

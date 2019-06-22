@@ -398,6 +398,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func StartButton(_ sender: Any) {   //タイマー
         timepicker.isHidden = true
         timerlabel.isHidden = false
+        
     }
     
     @IBAction func StopButton(_ sender: Any) {    //タイマー
@@ -427,6 +428,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         timerformatter.dateFormat = "hh:mm:ss"
         
         timerlabel.text = timerformatter.string(from: sender.date)
+        
     }
         
     

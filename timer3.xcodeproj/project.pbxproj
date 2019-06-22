@@ -10,6 +10,7 @@
 		34B98EB469B8B4AAF223FC9A /* Pods_timer3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A14FBBC6A49E641A86DD992 /* Pods_timer3.framework */; };
 		38346109CEDD82F04849CB84 /* Pods_timer3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7A779D5C1A57E1C1597BDD /* Pods_timer3Tests.framework */; };
 		79389F5622BAEA4A0061CC79 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79389F5522BAEA4A0061CC79 /* NotificationViewController.swift */; };
+		79389F5822BE52070061CC79 /* comentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79389F5722BE52070061CC79 /* comentViewController.swift */; };
 		79647786224878100047BA40 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79647785224878100047BA40 /* RemindViewController.swift */; };
 		7985E9EB22B3B6E600A5D98A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7985E9EA22B3B6E600A5D98A /* FirstViewController.swift */; };
 		7985E9ED22B3CBBA00A5D98A /* testsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7985E9EC22B3CBBA00A5D98A /* testsViewController.swift */; };
@@ -56,6 +57,7 @@
 		40C33D26509686B5C51BB4C4 /* Pods-timer3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timer3.release.xcconfig"; path = "Target Support Files/Pods-timer3/Pods-timer3.release.xcconfig"; sourceTree = "<group>"; };
 		683E5411F7F62727788EA5D3 /* Pods_timer3UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_timer3UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79389F5522BAEA4A0061CC79 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		79389F5722BE52070061CC79 /* comentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = comentViewController.swift; sourceTree = "<group>"; };
 		79647785224878100047BA40 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		7985E9EA22B3B6E600A5D98A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		7985E9EC22B3CBBA00A5D98A /* testsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testsViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				7985E9EA22B3B6E600A5D98A /* FirstViewController.swift */,
 				7985E9EC22B3CBBA00A5D98A /* testsViewController.swift */,
 				79389F5522BAEA4A0061CC79 /* NotificationViewController.swift */,
+				79389F5722BE52070061CC79 /* comentViewController.swift */,
 				79FB7B0C224F255500F0889A /* Main.storyboard */,
 				79FF9988221183A000C912A4 /* Assets.xcassets */,
 				79FF998A221183A000C912A4 /* LaunchScreen.storyboard */,
@@ -439,6 +442,7 @@
 				79FD914F22499E4B0045C2E6 /* PickerViewController.swift in Sources */,
 				79FF9984221183A000C912A4 /* ViewController.swift in Sources */,
 				7985E9ED22B3CBBA00A5D98A /* testsViewController.swift in Sources */,
+				79389F5822BE52070061CC79 /* comentViewController.swift in Sources */,
 				79FF9982221183A000C912A4 /* AppDelegate.swift in Sources */,
 				7985E9EB22B3B6E600A5D98A /* FirstViewController.swift in Sources */,
 				79FD914D2249993C0045C2E6 /* TableViewController.swift in Sources */,
