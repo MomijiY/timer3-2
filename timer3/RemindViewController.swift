@@ -269,6 +269,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func tapReset() {
         
          buttonReset.layer.cornerRadius = 100
+        timer.invalidate()
         // 経過時間、ラベルを初期化する
         elapsedTime = 0.0
         labelStopwatch.text = "00:00:00"
@@ -381,8 +382,6 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var timerlabel: UILabel!           //タイマー（label）
     @IBOutlet weak var manuallabel: UILabel!          //手動入力(ページ数)
     @IBOutlet weak var manualfield: UITextField!      //手動入力(ページ数のtext field)
-    
-    
     @IBOutlet weak var teisyutubutton: UIButton!      //提出ボタン
     @IBOutlet weak var timepicker: UIDatePicker!    //タイマーピッカー
   
@@ -396,8 +395,6 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func StartButton(_ sender: Any) {   //タイマー
-        timepicker.isHidden = true
-        timerlabel.isHidden = false
         
     }
     
@@ -472,7 +469,6 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             manualpicker2.isHidden = true
             manuallabel1.isHidden = true
             manuallabel3.isHidden = true
-          
             teisyutubutton.isHidden = false
             timepicker.isHidden = true
             
