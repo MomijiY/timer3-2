@@ -158,7 +158,6 @@
 				79FB7B06224F074900F0889A /* Aleart.mp3 */,
 				79FB7B11224F8E1000F0889A /* start.mp3 */,
 				79FB7B13224F916800F0889A /* stop.mp3 */,
-				79A44DBB22B601F7005486AC /* GoogleService-Info.plist */,
 				79FF9981221183A000C912A4 /* AppDelegate.swift */,
 				79FF9983221183A000C912A4 /* ViewController.swift */,
 				79FD914C2249993C0045C2E6 /* TableViewController.swift */,
@@ -171,6 +170,7 @@
 				79FB7B0C224F255500F0889A /* Main.storyboard */,
 				79FF9988221183A000C912A4 /* Assets.xcassets */,
 				79FF998A221183A000C912A4 /* LaunchScreen.storyboard */,
+				79A44DBB22B601F7005486AC /* GoogleService-Info.plist */,
 				79FF998D221183A000C912A4 /* Info.plist */,
 			);
 			path = timer3;

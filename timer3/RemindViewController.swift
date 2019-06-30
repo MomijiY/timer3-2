@@ -224,7 +224,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func tapStart() {
         
         buttonStart.isEnabled = false
-        buttonReset.isEnabled = false
+        buttonReset.isEnabled = true
         
         buttonStop.isEnabled = true
         
@@ -267,6 +267,9 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     // Resetボタンを押した時の処理
     @IBAction func tapReset() {
+        buttonStart.isEnabled = true
+        buttonStop.isEnabled = false
+        buttonReset.isEnabled = false
         
          buttonReset.layer.cornerRadius = 100
         timer.invalidate()
@@ -424,6 +427,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let timerformatter = DateFormatter()
         timerformatter.dateFormat = "hh:mm:ss"
         
+
         timerlabel.text = timerformatter.string(from: sender.date)
         
     }

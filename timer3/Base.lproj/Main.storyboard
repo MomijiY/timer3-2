@@ -56,6 +56,7 @@
                                     <color key="titleColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="StartButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="xul-ka-30A"/>
                                     <action selector="startbutton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="Za6-7t-9ux"/>
                                 </connections>
                             </button>
@@ -77,18 +78,13 @@
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="StopButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="eIQ-py-pA3"/>
                                     <action selector="stopbutton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="GgZ-mC-WFn"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="数学" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOo-Np-AcA">
                                 <rect key="frame" x="27" y="415" width="325" height="26"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ut-r4-QbG">
-                                <rect key="frame" x="102" y="221" width="170" height="36"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -168,6 +164,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ut-r4-QbG">
+                                <rect key="frame" x="0.0" y="221" width="375" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -226,7 +228,7 @@
                         <outlet property="buttonStart" destination="v8O-4A-0sO" id="I2S-BN-cyC"/>
                         <outlet property="buttonStop" destination="PXt-Jq-1Sz" id="KGT-1D-LTc"/>
                         <outlet property="dateField" destination="ev9-yt-MLn" id="V8u-Lh-H9m"/>
-                        <outlet property="labelStopwatch" destination="trp-ZN-QbB" id="0v0-WX-rGw"/>
+                        <outlet property="labelStopwatch" destination="5ut-r4-QbG" id="hTi-AC-NFr"/>
                         <outlet property="manualfield" destination="7YJ-L6-QhN" id="YXG-FP-Alq"/>
                         <outlet property="manuallabel" destination="D4a-aI-gsZ" id="SBx-dt-UV1"/>
                         <outlet property="manuallabel1" destination="D4a-aI-gsZ" id="hLd-cW-fVX"/>
@@ -240,14 +242,14 @@
                         <outlet property="stop" destination="PXt-Jq-1Sz" id="L15-u5-wyD"/>
                         <outlet property="teisyutubutton" destination="Frk-KT-uT1" id="CIM-8d-0jO"/>
                         <outlet property="timepicker" destination="UDA-6U-mcn" id="kB1-aZ-tbv"/>
-                        <outlet property="timerlabel" destination="5ut-r4-QbG" id="zlC-jC-YeV"/>
+                        <outlet property="timerlabel" destination="trp-ZN-QbB" id="sV0-si-YrN"/>
                         <outlet property="timerstart" destination="aRD-UV-PCb" id="ycn-na-rjF"/>
                         <outlet property="timerstop" destination="fhE-zv-vTA" id="Pqe-6Y-uBX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6P-Vd-VOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1351.2" y="928.78560719640188"/>
+            <point key="canvasLocation" x="-1351.2" y="957.57121439280365"/>
         </scene>
         <!--Coment View Controller-->
         <scene sceneID="Kch-KZ-jWd">
@@ -418,10 +420,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPF-6q-eTa">
                                 <rect key="frame" x="141" y="542" width="92" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="0.1542166095534247" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="次へ">
-                                    <color key="titleColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="MemorySave" destination="Xd2-OD-zsK" eventType="touchUpInside" id="FIx-WA-yCz"/>
@@ -703,6 +705,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AwM-oU-W8Q"/>
-        <segue reference="zDV-Sd-fyx"/>
+        <segue reference="iWQ-sW-jYx"/>
     </inferredMetricsTieBreakers>
 </document>

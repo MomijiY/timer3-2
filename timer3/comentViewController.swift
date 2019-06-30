@@ -23,7 +23,7 @@ class comentViewController: UIViewController {
     }
     
     @IBAction func reroadbtnAc() {
-        database.collection("coment").document("comment").getDocument { (snap, error) in
+        database.collection("coment").document("coment").getDocument { (snap, error) in
             if let error = error {
                 fatalError("\(error)")
                 
