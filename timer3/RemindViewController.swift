@@ -20,6 +20,8 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var count: Float = 0.0
     
     @IBOutlet weak var dateField: UITextField!
+    @IBOutlet weak var timerField: UITextField! //
+    var timerpicker: UIDatePicker = UIDatePicker() //
     
     var datePicker: UIDatePicker = UIDatePicker()
     
@@ -40,6 +42,18 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
+    @objc func doneItem_timer() {
+        timerField.endEditing(true)
+        
+        let formatter_timer = DateFormatter()
+        
+        formatter_timer.dateFormat = "HH時間mm分ss秒"
+        
+        timerField.text = "\(formatter_timer.string(from: timerpicker.date))"
+        
+        
+        
+    }
     
     
     @IBAction func saveMemo() {
@@ -145,8 +159,8 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         setAudioPlayer(soundName: "start", type: "mp3")
         audioPlayer.play()
         
-        timepicker.isHidden = true
-        timerlabel.isHidden = false
+        timerpicker.isHidden = true
+//        timerlabel.isHidden = false
     }
     
     
@@ -159,8 +173,8 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         setAudioPlayer(soundName: "stop", type: "mp3")
         audioPlayer.play()
         
-        timepicker.isHidden = false
-        timerlabel.isHidden = true
+        timerpicker.isHidden = false
+//        timerField.isHidden = true
         
     }
 
@@ -280,6 +294,20 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //timer picker
+        timerpicker.datePickerMode = UIDatePicker.Mode.countDownTimer
+        timerpicker.timeZone = NSTimeZone.local
+        timerpicker.locale = Locale.current
+        timerField.inputView = timerpicker
+        
+        
+        
+        //timer インプットビュー設定
+        timerField.inputView = timerpicker
+        //
+        timerField.text = saveData.object(forKey: "timer") as? String
+        
+        
         database = Firestore.firestore()
         
         // ピッカー設定
@@ -321,10 +349,11 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         stop.isHidden = true
         timerstart.isHidden = true
         timerstop.isHidden = true
-        timerlabel.isHidden = true
+//        timerlabel.isHidden = true
         labelStopwatch.isHidden = true
         teisyutubutton.isHidden = false
-        timepicker.isHidden = true
+        timerpicker.isHidden = true
+        timerField.isHidden = true
     
     }
     
@@ -339,11 +368,10 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var stop: UIButton!                //ストップウォッチ（ストップ）
     @IBOutlet weak var timerstart: UIButton!          //タイマー（スタート）
     @IBOutlet weak var timerstop: UIButton!           //タイマー（ストップ）
-    @IBOutlet weak var timerlabel: UILabel!           //タイマー（label）
+//    @IBOutlet weak var timerlabel: UILabel!           //タイマー（label）
     @IBOutlet weak var manuallabel: UILabel!          //手動入力(ページ数)
     @IBOutlet weak var manualfield: UITextField!      //手動入力(ページ数のtext field)
     @IBOutlet weak var teisyutubutton: UIButton!      //提出ボタン
-    @IBOutlet weak var timepicker: UIDatePicker!    //タイマーピッカー
   
     @IBAction func resetbutton(_ sender: Any) {   //ストップウォッチ
     }
@@ -380,14 +408,15 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func teisyutubutton(_ sender: Any) {   //提出ボタン
     }
     
-    @IBAction func timepicker(_ sender: UIDatePicker) {
-        let timerformatter = DateFormatter()
-        timerformatter.dateFormat = "hh:mm:ss"
-        
-
-        timerlabel.text = timerformatter.string(from: sender.date)
-//        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
-    }
+//    @IBAction func timerpicker(_ sender: UIDatePicker) {
+//        let timerformatter = DateFormatter()
+//        timerformatter.dateFormat = "hh:mm:ss"
+//
+//
+//
+//        timerlabel.text = timerformatter.string(from: sender.date)
+////        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+//    }
     
     @objc func updateTimer() {
         // 時間を小数点前後で分割(小数点以下は2桁だけ取得)
@@ -396,22 +425,22 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         count = count - 1
         if count == 0.0 {
             timer.invalidate()
-            timepicker.isHidden = false
-            timerlabel.isHidden = true
+            timerpicker.isHidden = false
+            timerField.isHidden = true
         } else {
-            timerlabel.text = String(format: "%2d:%02d:%02d", sec/3600, (sec/60)%60, sec%60)
-            timepicker.isHidden = true
-            timerlabel.isHidden = false
+            timerField.text = String(format: "%2d:%02d:%02d", sec/3600, (sec/60)%60, sec%60)
+            timerpicker.isHidden = true
+            timerField.isHidden = false
         
         }
         // 経過時間は以下の式で計算する
         // (現在の時刻 - Startボタンを押した時刻) + Stopボタンを押した時点で経過していた時刻
         timer_time = Date().timeIntervalSince1970 - startTime + elapsedTime
-        
-        
+
+
         // 「XX:XX:XX」形式でラベルに表示する
         let displayStr2 = NSString(format: "%2d:%02d:%02d", sec/3600, (sec/60)%60, sec%60) as String
-        timerlabel.text = displayStr2
+        timerField.text = displayStr2
     }
     
 //    @objc func updateTimer() {
@@ -468,7 +497,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             stop.isHidden = true
             timerstart.isHidden = true
             timerstop.isHidden = true
-            timerlabel.isHidden = true
+//            timerlabel.isHidden = true
             labelStopwatch.isHidden  = true
             dateField.isHidden = false
             manuallabel.isHidden = true
@@ -476,10 +505,11 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             manualpicker2.isHidden = false
             manuallabel1.isHidden = false
             manuallabel3.isHidden = false
-            
+            //
+            timerField.isHidden = true
             
             teisyutubutton.isHidden = false
-            timepicker.isHidden = true
+            timerpicker.isHidden = true
 
             
         case 1:
@@ -490,7 +520,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             timerstart.isHidden = true
             timerstop.isHidden = true
             labelStopwatch.isHidden = false
-            timerlabel.isHidden = true
+//            timerlabel.isHidden = true
             dateField.isHidden = true
             manuallabel.isHidden = true
             manualfield.isHidden = true
@@ -498,7 +528,9 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             manuallabel1.isHidden = true
             manuallabel3.isHidden = true
             teisyutubutton.isHidden = false
-            timepicker.isHidden = true
+            //
+            timerField.isHidden = true
+            timerpicker.isHidden = true
             
         case 2:
             
@@ -508,17 +540,17 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             timerstart.isHidden = false
             timerstop.isHidden = false
             labelStopwatch.isHidden = true
-            timerlabel.isHidden = true
+//            timerlabel.isHidden = true
             dateField.isHidden = true
             manuallabel.isHidden = true
             manualfield.isHidden = true
             manualpicker2.isHidden = true
             manuallabel1.isHidden = true
             manuallabel3.isHidden = true
-            
-            
+            //
+            timerField.isHidden = false
             teisyutubutton.isHidden = false
-            timepicker.isHidden = false
+            timerpicker.isHidden = false
            
           
         default: break

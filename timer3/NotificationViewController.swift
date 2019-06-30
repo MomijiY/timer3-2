@@ -22,6 +22,8 @@ class NotificationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        database = Firestore.firestore()
     }
     
     @IBAction func btnLook() {
@@ -44,9 +46,9 @@ class NotificationViewController: UIViewController {
                 
             }
             guard let data = snap?.data() else { return }
-            print(data["teacher_data"]!)
+            print(data["text"]!)
             
-            self.ntfLabel.text = data["teacher_data"] as? String
+            self.ntfLabel.text = data["text"] as? String
     }
 
 }

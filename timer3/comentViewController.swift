@@ -19,6 +19,7 @@ class comentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        database = Firestore.firestore()
         // Do any additional setup after loading the view.
     }
     
@@ -29,9 +30,9 @@ class comentViewController: UIViewController {
                 
             }
             guard let data = snap?.data() else { return }
-            print(data["coment"]!)
+            print(data["text"]!)
             
-            self.comentLbl.text = data["coment"] as? String
+            self.comentLbl.text = data["text"] as? String
         }
     }
     
