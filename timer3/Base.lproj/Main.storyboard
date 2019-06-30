@@ -34,7 +34,6 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <state key="normal" title="start"/>
                                 <connections>
-                                    <action selector="StartButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="4GF-u8-PCr"/>
                                     <action selector="startbutton1:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="VTU-ii-yrH"/>
                                     <action selector="tapStart" destination="Uxy-8W-h2j" eventType="touchUpInside" id="LAd-67-J5c"/>
                                 </connections>
@@ -44,7 +43,6 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="stop"/>
                                 <connections>
-                                    <action selector="StopButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="6eo-ah-bEd"/>
                                     <action selector="stopbutton2:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="ql3-8S-VtU"/>
                                     <action selector="tapStop" destination="Uxy-8W-h2j" eventType="touchUpInside" id="McJ-jh-Zi2"/>
                                 </connections>
@@ -56,7 +54,7 @@
                                     <color key="titleColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="StartButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="xul-ka-30A"/>
+                                    <action selector="StartButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="m4a-h6-bn4"/>
                                     <action selector="startbutton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="Za6-7t-9ux"/>
                                 </connections>
                             </button>
@@ -78,7 +76,7 @@
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="StopButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="eIQ-py-pA3"/>
+                                    <action selector="StopButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="bRU-fZ-6LL"/>
                                     <action selector="stopbutton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="GgZ-mC-WFn"/>
                                 </connections>
                             </button>
@@ -705,6 +703,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AwM-oU-W8Q"/>
-        <segue reference="iWQ-sW-jYx"/>
+        <segue reference="zDV-Sd-fyx"/>
     </inferredMetricsTieBreakers>
 </document>

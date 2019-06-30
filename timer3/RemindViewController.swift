@@ -119,6 +119,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     ]
     
     var timer = Timer()
+    var timer_timer = Timer()
     
     var audioPlayer: AVAudioPlayer!
     
@@ -140,7 +141,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     @IBAction func startbutton(_ sender: Any) {  //タイマーのstartボタン
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        timer_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         setAudioPlayer(soundName: "start", type: "mp3")
         audioPlayer.play()
         
@@ -162,57 +163,14 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         timerlabel.isHidden = true
         
     }
-    
-    
-    @objc func updateTimer() {
-        
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        
-        count = count - 1
-        
-        if count == 0.0 {
-            timer.invalidate()
-            timepicker.isHidden = false
-            timerlabel.isHidden = true
-        } else {
-            timerlabel.text = String(format: "%2d:%02d:%02d", hours,minutes,seconds)
-            timepicker.isHidden = true
-            timerlabel.isHidden = false
-            
-        }
-        
-        
-//        if timepicker.countDownDuration == 60  {
-//            timer.invalidate()
-//
-//            setAudioPlayer(soundName: "Aleart", type: "mp3")
-//            audioPlayer.play()
-//
-//        } else {
-//            timepicker.setDate(timepicker.date - 1, animated: true)
-//        }
-//
-//        func timeString(time:TimeInterval) -> String {
-//
-//            let hours = Int(time) / 3600
-//            let minutes = Int(time) / 60 % 60
-//            let seconds = Int(time) % 60
-//
-//            return String(format: "%2d:%02d:%02d", hours,minutes,seconds)
-//
-//        }
-        
-    }
 
     @IBOutlet weak var scSegment: UISegmentedControl!  //セグメントコントロール
     
     var stopwatchtimer = Timer()                 // Timerクラス
     var startTime: TimeInterval = 0     // Startボタンを押した時刻
     var elapsedTime: Double = 0.0       // Stopボタンを押した時点で経過していた時間
-    var time : Double = 0.0             // ラベルに表示する時間
-    
+    var time : Double = 0.0             // ラベルに表示する時間(stopwatch)
+    var timer_time : Double = 0.0       //ラベルに表示する時間(timer)
     @IBOutlet weak var labelStopwatch: UILabel!     // タイムを表示するラベル
     
     @IBOutlet weak var buttonStart: UIButton!   // Startボタン
@@ -220,12 +178,11 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var buttonReset: UIButton!   // Resetボタン
     
     
-    // Startボタンを押した時の処理
+    // Startボタンを押した時の処理(stopwatch)
     @IBAction func tapStart() {
         
         buttonStart.isEnabled = false
         buttonReset.isEnabled = true
-        
         buttonStop.isEnabled = true
         
         startTime = Date().timeIntervalSince1970
@@ -429,9 +386,51 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
 
         timerlabel.text = timerformatter.string(from: sender.date)
+//        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        
+        let hours = Int(timer_time) / 3600
+        let minutes = Int(timer_time) / 60 % 60
+        let seconds = Int(timer_time) % 60
+        
+        count = count - 1
+        
+        if count == 0.0 {
+            timer.invalidate()
+            timepicker.isHidden = false
+            timerlabel.isHidden = true
+        } else {
+            timerlabel.text = String(format: "%2d:%02d:%02d", hours,minutes,seconds)
+            timepicker.isHidden = true
+            timerlabel.isHidden = false
+            
+        }
+        
+        
+        //        if timepicker.countDownDuration == 60  {
+        //            timer.invalidate()
+        //
+        //            setAudioPlayer(soundName: "Aleart", type: "mp3")
+        //            audioPlayer.play()
+        //
+        //        } else {
+        //            timepicker.setDate(timepicker.date - 1, animated: true)
+        //        }
+        //
+        //        func timeString(time:TimeInterval) -> String {
+        //
+        //            let hours = Int(time) / 3600
+        //            let minutes = Int(time) / 60 % 60
+        //            let seconds = Int(time) % 60
+        //
+        //            return String(format: "%2d:%02d:%02d", hours,minutes,seconds)
+        //
+        //        }
         
     }
-        
+    
     
     @IBAction func segmentButton() {
 
