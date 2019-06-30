@@ -166,7 +166,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     @IBOutlet weak var scSegment: UISegmentedControl!  //セグメントコントロール
     
-    var stopwatchtimer = Timer()                 // Timerクラス
+//    var stopwatchtimer = Timer()                 // Timerクラス
     var startTime: TimeInterval = 0     // Startボタンを押した時刻
     var elapsedTime: Double = 0.0       // Stopボタンを押した時点で経過していた時間
     var time : Double = 0.0             // ラベルに表示する時間(stopwatch)
@@ -390,24 +390,49 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @objc func updateTimer() {
-        
-        let hours = Int(timer_time) / 3600
-        let minutes = Int(timer_time) / 60 % 60
-        let seconds = Int(timer_time) % 60
+        // 時間を小数点前後で分割(小数点以下は2桁だけ取得)
+        let sec = Int(timer_time)
         
         count = count - 1
-        
         if count == 0.0 {
             timer.invalidate()
             timepicker.isHidden = false
             timerlabel.isHidden = true
         } else {
-            timerlabel.text = String(format: "%2d:%02d:%02d", hours,minutes,seconds)
+            timerlabel.text = String(format: "%2d:%02d:%02d", sec/3600, (sec/60)%60, sec%60)
             timepicker.isHidden = true
             timerlabel.isHidden = false
-            
-        }
         
+        }
+        // 経過時間は以下の式で計算する
+        // (現在の時刻 - Startボタンを押した時刻) + Stopボタンを押した時点で経過していた時刻
+        timer_time = Date().timeIntervalSince1970 - startTime + elapsedTime
+        
+        
+        // 「XX:XX:XX」形式でラベルに表示する
+        let displayStr2 = NSString(format: "%2d:%02d:%02d", sec/3600, (sec/60)%60, sec%60) as String
+        timerlabel.text = displayStr2
+    }
+    
+//    @objc func updateTimer() {
+//
+//        let hours = Int(timer_time) / 3600
+//        let minutes = Int(timer_time) / 60 % 60
+//        let seconds = Int(timer_time) % 60
+//
+//        count = count - 1
+//
+//        if count == 0.0 {
+//            timer.invalidate()
+//            timepicker.isHidden = false
+//            timerlabel.isHidden = true
+//        } else {
+//            timerlabel.text = String(format: "%2d:%02d:%02d", hours,minutes,seconds)
+//            timepicker.isHidden = true
+//            timerlabel.isHidden = false
+//
+//        }
+    
         
         //        if timepicker.countDownDuration == 60  {
         //            timer.invalidate()
@@ -429,7 +454,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         //
         //        }
         
-    }
+    
     
     
     @IBAction func segmentButton() {
