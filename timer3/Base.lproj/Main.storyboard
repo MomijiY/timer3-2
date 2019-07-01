@@ -80,7 +80,7 @@
                                 </state>
                                 <connections>
                                     <action selector="StopButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="bRU-fZ-6LL"/>
-                                    <action selector="stopbutton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="GgZ-mC-WFn"/>
+                                    <action selector="stopbtn:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="Ymb-hb-P5e"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="数学" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOo-Np-AcA">
@@ -164,9 +164,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="timerpicker:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="axm-Nb-xql"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
