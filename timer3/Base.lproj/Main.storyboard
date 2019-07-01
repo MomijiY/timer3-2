@@ -420,11 +420,19 @@
                                     <segue destination="AmK-2O-I7M" kind="presentation" id="iWQ-sW-jYx"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="00A-bl-eaf">
+                                <rect key="frame" x="35" y="187" width="304" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="zOb-sK-RQU"/>
                     </view>
                     <connections>
+                        <outlet property="testdateField" destination="00A-bl-eaf" id="cIt-vD-swr"/>
                         <outlet property="titleTextField1" destination="cXd-Sk-dZP" id="Gun-E5-LvD"/>
                         <outlet property="titleTextField2" destination="8gj-Fa-2la" id="KAI-Pn-j6Y"/>
                         <outlet property="titleTextField3" destination="XIl-Bs-le8" id="ZVJ-ci-Zeb"/>
@@ -432,7 +440,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rh1-Ug-b10" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-343" y="71"/>
+            <point key="canvasLocation" x="-343.19999999999999" y="70.614692653673174"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="EQX-BU-Jml">
@@ -695,6 +703,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AwM-oU-W8Q"/>
-        <segue reference="zDV-Sd-fyx"/>
+        <segue reference="iWQ-sW-jYx"/>
     </inferredMetricsTieBreakers>
 </document>

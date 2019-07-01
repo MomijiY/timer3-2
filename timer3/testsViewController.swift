@@ -10,19 +10,33 @@ import UIKit
 
 class testsViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var testdateField: UITextField!
     @IBOutlet weak var titleTextField1: UITextField!
     @IBOutlet weak var titleTextField2: UITextField!
     @IBOutlet weak var titleTextField3: UITextField!
     
     var saveData: UserDefaults = UserDefaults.standard
+    var testdatePicker: UIDatePicker = UIDatePicker()
+    
+    @objc func done_timer() {
+        testdateField.endEditing(true)
+        
+        let formtter = DateFormatter()
+        
+        formtter.dateFormat = "yyyy年MM月dd日"
+        
+        testdateField.text = "\(formtter.string(from: testdatePicker.date))"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        testdateField.text = saveData.object(forKey: "testdate") as? String
         titleTextField1.text = saveData.object(forKey: "title1") as? String
         titleTextField2.text = saveData.object(forKey: "title2") as? String
         titleTextField3.text = saveData.object(forKey: "title3") as? String
         
+        testdateField.delegate = self
         titleTextField1.delegate = self
         titleTextField2.delegate = self
         titleTextField3.delegate = self
@@ -48,6 +62,7 @@ class testsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func MemorySave() {
+        saveData.set(testdateField.text, forKey: "testdate")
         saveData.set(titleTextField1.text, forKey: "title1")
         saveData.set(titleTextField2.text, forKey: "title2")
         saveData.set(titleTextField3.text, forKey: "title3")
