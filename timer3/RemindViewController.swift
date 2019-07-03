@@ -17,7 +17,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var timerPicker: UIDatePicker = UIDatePicker()
     var timer_count: Float = 30   //timer
     var timer = Timer()           //stopwatch
-    var timer_timer = Timer()     //timer
+    var timer_timer = Timer()
     
     var database: Firestore!
     
