@@ -9,71 +9,66 @@
 //  AddController.swift
 import UIKit
 
-var TodoKobetsunonakami = [String]()
-
-class TodoListViewController: UITableViewController {
-
-        //テキストフィールドの設定
-        @IBOutlet weak var TodoTextField: UITextField!
-    //Button
-        @IBOutlet weak var TodoAddBtn: UIButton!
+//classの継承を追加
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
+    
+    // アイテムの型
+    class Item {
+        var title : String
+        var done: Bool = false
         
-        //追加ボタンの設定
-        @IBAction func TodoAddButten(_ sender: Any) {
-            //変数に入力内容を入れる
-            TodoKobetsunonakami.append(TodoTextField.text!)
-            //追加ボタンを押したらフィールドを空にする
-            TodoTextField.text = ""
-            //変数の中身をUDに追加
-            UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
+        init(title: String) {
+            self.title = title
         }
-        
-        //最初からあるコード
-        override func viewDidLoad() {
-            super.viewDidLoad()
-        }
-        
-        //最初からあるコード
-        override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
     }
     
+    // この配列に作ったアイテムを追加していく
+    var itemArray: [Item] = []
+    
+    //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //戻り値の設定(表示するcell数)
+        return TodoKobetsunonakami.count
+    }
+    
+    //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //変数を作る
+        let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
+        //変数の中身を作る
+        TodoCell.textLabel!.text = TodoKobetsunonakami[indexPath.row]
+        //戻り値の設定（表示する中身)
+        return TodoCell
+    }
+    
+    //セルの編集許可
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+    //スワイプしたセルを削除　
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            itemArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+        }
+    }
 
     
-//    // MARK - チェックマーク機能
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        // 選択されたセルに実行される処理
-//
-//        let item = TodoKobetsunonakami[indexPath.row]
-//
-//        // チェックマーク
-//        item.done = !item.done
-//
-//        // リロードしてUIに反映
-//        self.tableView.reloadData()
-//
-//        // セルを選択した時の背景の変化を遅くする
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//    }
-//
-//
-//    //スワイプでのアイテム削除
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//
-//        TodoKobetsunonakami.remove(at: indexPath.row)
-//        _ = [indexPath]
-//        tableView.deleteRows(at: [indexPath], with: .automatic)
-//
-//    }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        //アプリ内に保存されているarrayというキーの配列arrayを取り出して、showArrayに代入する。
-//        if UserDefaults.standard.object(forKey: "array") != nil{
-//
-//            TodoKobetsunonakami = UserDefaults.standard.object(forKey: "array") as! [String]
-//        }
-//    }
+    //最初からあるコード
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //追加画面で入力した内容を取得する
+        if UserDefaults.standard.object(forKey: "TodoList") != nil {
+            TodoKobetsunonakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
+        }
+    }
+    
+    //最初からあるコード
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
 }

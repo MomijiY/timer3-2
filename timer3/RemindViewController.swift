@@ -15,7 +15,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     var timerPicker: UIDatePicker = UIDatePicker()
-    var timer_count: Float = 30   //timer
+//    var timer_count: Float = 30   //timer
     var timer = Timer()           //stopwatch
     var timer_timer = Timer()
     
@@ -158,9 +158,9 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     //timer
     @IBAction func startbutton(_ sender: Any) { //timer start button
         timer_timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer_timer) in
-            self.timer_count -= 1
-            self.timerField.text = String(self.timer_count)
-            print(self.timer_count)
+            self.timer_time -= 1
+            self.timerField.text = String(self.timer_time)
+            print(self.timer_time)
         })
     }
     
@@ -202,7 +202,12 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         startTime = Date().timeIntervalSince1970
         // 0.01秒おきに関数「update」を呼び出す
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+//        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: {(timer) in
+            self.timer_time -= 1
+            print(self.timer_time)
+        })
         
         buttonStart.layer.cornerRadius = 10
     }
