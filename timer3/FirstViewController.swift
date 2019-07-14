@@ -11,9 +11,7 @@ import UIKit
 class FirstViewController: UIViewController {
     
     @IBOutlet weak var label:  UILabel!
-    
-    var email: String = "sample@gmail.com"
-    var password: String = "123456"
+    @IBOutlet weak var userLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

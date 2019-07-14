@@ -70,6 +70,8 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         saveData.set(manualfield.text, forKey: "Page")
         saveData.set(manuallabel3.text, forKey: "Subject")
         saveData.set(labelStopwatch.text, forKey: "Stopwatch")
+        saveData.set(timerLabel.text, forKey: "Timer")
+        dateField.text = timerLabel.text
         
         let alert: UIAlertController = UIAlertController(title: "OK", message: "記録の保存が完了しました", preferredStyle: .alert)
         
@@ -86,7 +88,6 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             "text": dateField.text!,
             "page": manualfield.text!,
             "subject": manuallabel3.text!
-            
             ] as [String: Any]
         
         database.collection("data").document("example").setData(data){err in
@@ -162,13 +163,15 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func startbutton(_ sender: Any) { //timer start button
         timer_time = Int(timerpicker.countDownDuration)
         timerLabel.text = "\(timer_time / 3600) : \(timer_time / 60 % 60) : \(timer_time % 60)"
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
+        timer_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
 
     }
     @objc func countDown() {
         if(timer_time > 0){
             timer_time -= 1
             timerLabel.text = "\(timer_time / 3600) : \(timer_time / 60 % 60) : \(timer_time % 60)"
+        }else{
+            timer_timer.invalidate()
         }
     }
     
@@ -178,11 +181,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             //
             timerLabel.endEditing(true)
             
-            let formtter = DateFormatter()
-            
-            formtter.dateFormat = "HH:mm:ss"
-            
-            timerLabel.text = "\(formtter.string(from: timerPicker.date))"
+            timerLabel.text = "00:00:00"
         }
     }
     //timer
@@ -204,21 +203,14 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     // Startボタンを押した時の処理(stopwatch)
     @IBAction func tapStart() {
-        
         buttonStart.isEnabled = false
-        buttonReset.isEnabled = true
+        buttonReset.isEnabled = false
+        
         buttonStop.isEnabled = true
         
         startTime = Date().timeIntervalSince1970
         // 0.01秒おきに関数「update」を呼び出す
-//        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: {(timer) in
-//            self.timer_time -= 1
-            self.timer_time = Int(self.timerpicker.countDownDuration)
-            self.timer_time -= 1
-            print(self.timer_time)
-        })
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
         buttonStart.layer.cornerRadius = 10
     }
@@ -238,6 +230,8 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     // Stopボタンを押した時の処理
     @IBAction func tapStop() {
+        // タイマー処理を止める
+        timer.invalidate()
         
         buttonStop.layer.cornerRadius = 10
         
@@ -246,8 +240,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         buttonReset.isEnabled = true
         // Stopボタンを無効化
         buttonStop.isEnabled = false
-        // タイマー処理を止める
-        timer.invalidate()
+        
         // 再度Startボタンを押した時に加算するため、これまでに計測した経過時間を保存
         elapsedTime = time
         
@@ -255,12 +248,8 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     // Resetボタンを押した時の処理
     @IBAction func tapReset() {
-        buttonStart.isEnabled = true
-        buttonStop.isEnabled = false
-        buttonReset.isEnabled = false
-        
-        buttonReset.layer.cornerRadius = 100
         timer.invalidate()
+        buttonReset.layer.cornerRadius = 100
         // 経過時間、ラベルを初期化する
         elapsedTime = 0.0
         labelStopwatch.text = "00:00:00"
@@ -360,6 +349,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         dateField.text = saveData.object(forKey: "Text") as? String
         manuallabel3.text = saveData.object(forKey: "Subject") as? String
         manualfield.text = saveData.object(forKey: "Page") as? String
+        timerLabel.text = saveData.object(forKey: "Timer") as? String
         //manual・ページ数入力の時のキーボードの種類ー＞数字のみ
         manualfield.keyboardType = UIKeyboardType.numberPad
         
@@ -385,6 +375,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         teisyutubutton.isHidden = false
         timerpicker.isHidden = true
         timerLabel.isHidden = true
+//        timerDoneOU.isHidden = true
         
     }
     
@@ -403,7 +394,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var manuallabel: UILabel!          //手動入力(ページ数)
     @IBOutlet weak var manualfield: UITextField!      //手動入力(ページ数のtext field)
     @IBOutlet weak var teisyutubutton: UIButton!      //提出ボタン
-    
+
     @IBAction func resetbutton(_ sender: Any) {   //ストップウォッチ
     }
     
@@ -423,8 +414,18 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBOutlet weak var manualsublabel: UILabel!        //教科を表示するラベル（pickerに対応するラベル）
     
-    
-    
+//    @IBAction func timerDone() {
+//        timerstart.isEnabled = true
+//        timerstop.isEnabled = false
+//        timerDoneOU.isEnabled = false
+//
+//        timerDoneOU.layer.cornerRadius = 100
+//        timer.invalidate()
+//        // 経過時間、ラベルを初期化する
+//        elapsedTime = 0.0
+//        timerLabel.text = "00:00:00"
+//    }
+//
     
     @IBAction func manualfield(_ sender: Any) {     //ページ数のfield
     }
@@ -541,6 +542,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             
             teisyutubutton.isHidden = false
             timerpicker.isHidden = true
+//            timerDoneOU.isHidden = true
             
             
         case 1:
@@ -562,6 +564,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             //
             timerLabel.isHidden = true
             timerpicker.isHidden = true
+//            timerDoneOU.isHidden = true
             
         case 2:
             
@@ -582,6 +585,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             timerLabel.isHidden = false
             teisyutubutton.isHidden = false
             timerpicker.isHidden = false
+//            timerDoneOU.isHidden = false
             
             
         default: break
