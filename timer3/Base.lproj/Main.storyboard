@@ -30,7 +30,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8O-4A-0sO">
-                                <rect key="frame" x="162" y="459" width="51" height="40"/>
+                                <rect key="frame" x="162" y="447" width="51" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <state key="normal" title="start"/>
                                 <connections>
@@ -39,7 +39,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXt-Jq-1Sz">
-                                <rect key="frame" x="282" y="459" width="46" height="40"/>
+                                <rect key="frame" x="282" y="447" width="46" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="stop"/>
                                 <connections>
@@ -47,19 +47,8 @@
                                     <action selector="tapStop" destination="Uxy-8W-h2j" eventType="touchUpInside" id="McJ-jh-Zi2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRD-UV-PCb">
-                                <rect key="frame" x="112" y="409" width="45" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="start">
-                                    <color key="titleColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="StartButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="m4a-h6-bn4"/>
-                                    <action selector="startbutton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="Za6-7t-9ux"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLd-pH-jJz">
-                                <rect key="frame" x="45" y="459" width="56" height="40"/>
+                                <rect key="frame" x="45" y="447" width="56" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <state key="normal" title="reset">
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,22 +58,18 @@
                                     <action selector="tapReset" destination="Uxy-8W-h2j" eventType="touchUpInside" id="xl0-5s-cCf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhE-zv-vTA">
-                                <rect key="frame" x="230" y="409" width="43" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="43" id="WcF-wL-XCy"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhE-zv-vTA">
+                                <rect key="frame" x="232" y="405" width="43" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="stop">
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="StopButton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="bRU-fZ-6LL"/>
                                     <action selector="stopbtn:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="Ymb-hb-P5e"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="数学" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOo-Np-AcA">
-                                <rect key="frame" x="27" y="415" width="325" height="26"/>
+                                <rect key="frame" x="34" y="435" width="325" height="26"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -144,27 +129,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ut-r4-QbG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ut-r4-QbG">
                                 <rect key="frame" x="0.0" y="221" width="375" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rvH-01-GeC">
-                                <rect key="frame" x="49" y="180" width="281" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBK-8k-fRh">
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBK-8k-fRh">
                                 <rect key="frame" x="49" y="255" width="281" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biz-bp-Qwc">
+                                <rect key="frame" x="0.0" y="177" width="375" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="d9m-hd-PqN">
+                                <rect key="frame" x="0.0" y="437" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="584747601.05829298">
+                                    <!--2019-07-13 21:53:21 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRD-UV-PCb">
+                                <rect key="frame" x="99" y="407" width="45" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="start">
+                                    <color key="titleColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startbutton:" destination="Uxy-8W-h2j" eventType="touchUpInside" id="Za6-7t-9ux"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -173,36 +171,51 @@
                             <constraint firstItem="Frk-KT-uT1" firstAttribute="leading" secondItem="opg-gc-NQG" secondAttribute="trailing" constant="58" id="2L5-Xg-rxI"/>
                             <constraint firstItem="Frk-KT-uT1" firstAttribute="baseline" secondItem="4YJ-Az-kZE" secondAttribute="firstBaseline" id="4MN-1Q-xVi"/>
                             <constraint firstItem="iOo-Np-AcA" firstAttribute="leading" secondItem="eis-b7-DtX" secondAttribute="leading" constant="27" id="5Tx-4v-2vr"/>
-                            <constraint firstItem="fhE-zv-vTA" firstAttribute="baseline" secondItem="aRD-UV-PCb" secondAttribute="baseline" id="7ey-V3-6hS"/>
+                            <constraint firstItem="Biz-bp-Qwc" firstAttribute="leading" secondItem="d9m-hd-PqN" secondAttribute="leading" id="6bk-Zh-KhD"/>
                             <constraint firstItem="eis-b7-DtX" firstAttribute="bottom" secondItem="NOi-et-orP" secondAttribute="bottom" constant="6" id="9CW-IZ-yrz"/>
-                            <constraint firstItem="fLd-pH-jJz" firstAttribute="top" secondItem="aRD-UV-PCb" secondAttribute="bottom" constant="14" id="9TG-Zk-ZnZ"/>
                             <constraint firstItem="opg-gc-NQG" firstAttribute="top" secondItem="eis-b7-DtX" secondAttribute="top" constant="22" id="AXJ-9T-sc2"/>
+                            <constraint firstItem="aRD-UV-PCb" firstAttribute="firstBaseline" secondItem="fhE-zv-vTA" secondAttribute="baseline" id="AlE-BL-srg"/>
                             <constraint firstItem="q9r-hG-GC0" firstAttribute="centerX" secondItem="opg-gc-NQG" secondAttribute="centerX" id="CLN-Vc-eO9"/>
+                            <constraint firstItem="WBK-8k-fRh" firstAttribute="leading" secondItem="eis-b7-DtX" secondAttribute="leading" constant="49" id="Cjz-yQ-026"/>
+                            <constraint firstItem="Biz-bp-Qwc" firstAttribute="trailing" secondItem="J97-fq-aw4" secondAttribute="trailing" id="E6z-Pb-0j5"/>
+                            <constraint firstItem="Biz-bp-Qwc" firstAttribute="trailing" secondItem="5ut-r4-QbG" secondAttribute="trailing" id="EbC-Nk-ReU"/>
+                            <constraint firstItem="aRD-UV-PCb" firstAttribute="baseline" secondItem="fhE-zv-vTA" secondAttribute="baseline" id="FkT-HK-2gB"/>
                             <constraint firstItem="opg-gc-NQG" firstAttribute="leading" secondItem="4YJ-Az-kZE" secondAttribute="trailing" constant="64" id="Hy5-6R-KJx"/>
                             <constraint firstItem="v8O-4A-0sO" firstAttribute="top" secondItem="PXt-Jq-1Sz" secondAttribute="top" id="JBM-b6-cof"/>
                             <constraint firstItem="fLd-pH-jJz" firstAttribute="leading" secondItem="eis-b7-DtX" secondAttribute="leading" constant="45" id="OfA-hP-o8q"/>
+                            <constraint firstItem="WBK-8k-fRh" firstAttribute="centerX" secondItem="fhE-zv-vTA" secondAttribute="centerX" id="Omb-hZ-CYn"/>
+                            <constraint firstItem="Biz-bp-Qwc" firstAttribute="leading" secondItem="J97-fq-aw4" secondAttribute="leading" id="PdI-lX-IGg"/>
                             <constraint firstItem="eis-b7-DtX" firstAttribute="trailing" secondItem="Frk-KT-uT1" secondAttribute="trailing" constant="25" id="S0w-RQ-dO3"/>
                             <constraint firstItem="NOi-et-orP" firstAttribute="trailing" secondItem="J97-fq-aw4" secondAttribute="trailing" id="TF5-Hp-wjO"/>
                             <constraint firstItem="J97-fq-aw4" firstAttribute="top" secondItem="OJe-An-bFz" secondAttribute="top" constant="-236" id="TOw-wu-NY7"/>
+                            <constraint firstItem="5ut-r4-QbG" firstAttribute="top" secondItem="Biz-bp-Qwc" secondAttribute="bottom" constant="8" symbolic="YES" id="VLO-xc-B8e"/>
                             <constraint firstItem="PXt-Jq-1Sz" firstAttribute="leading" secondItem="v8O-4A-0sO" secondAttribute="trailing" constant="69" id="W3N-Hb-5v1"/>
-                            <constraint firstItem="fhE-zv-vTA" firstAttribute="leading" secondItem="aRD-UV-PCb" secondAttribute="trailing" constant="73" id="Wa2-Pn-qWF"/>
-                            <constraint firstItem="aRD-UV-PCb" firstAttribute="leading" secondItem="eis-b7-DtX" secondAttribute="leading" constant="112" id="YDN-VL-EhQ"/>
-                            <constraint firstItem="iOo-Np-AcA" firstAttribute="top" secondItem="fhE-zv-vTA" secondAttribute="top" id="aCo-vg-P9F"/>
+                            <constraint firstItem="Biz-bp-Qwc" firstAttribute="trailing" secondItem="d9m-hd-PqN" secondAttribute="trailing" id="ZpY-9b-yYv"/>
+                            <constraint firstItem="aRD-UV-PCb" firstAttribute="leading" secondItem="fLd-pH-jJz" secondAttribute="leading" id="asF-eC-pl7"/>
+                            <constraint firstItem="eis-b7-DtX" firstAttribute="trailing" secondItem="WBK-8k-fRh" secondAttribute="trailing" constant="45" id="cBL-uH-8CJ"/>
                             <constraint firstItem="NOi-et-orP" firstAttribute="centerX" secondItem="opg-gc-NQG" secondAttribute="centerX" id="cxx-le-Vzj"/>
                             <constraint firstItem="J97-fq-aw4" firstAttribute="leading" secondItem="OJe-An-bFz" secondAttribute="leading" id="eSQ-Nh-OqN"/>
                             <constraint firstItem="D4a-aI-gsZ" firstAttribute="leading" secondItem="fLd-pH-jJz" secondAttribute="leading" id="eiB-CF-5b9"/>
                             <constraint firstItem="opg-gc-NQG" firstAttribute="top" secondItem="4YJ-Az-kZE" secondAttribute="top" id="ekE-Rq-ZHd"/>
                             <constraint firstItem="NOi-et-orP" firstAttribute="centerX" secondItem="v8O-4A-0sO" secondAttribute="centerX" id="fMx-4d-y0C"/>
+                            <constraint firstItem="v8O-4A-0sO" firstAttribute="top" secondItem="fhE-zv-vTA" secondAttribute="bottom" constant="33" id="fsG-hi-ylg"/>
                             <constraint firstItem="q9r-hG-GC0" firstAttribute="leading" secondItem="OJe-An-bFz" secondAttribute="leadingMargin" id="gKW-oh-SWL"/>
+                            <constraint firstItem="WBK-8k-fRh" firstAttribute="top" secondItem="Biz-bp-Qwc" secondAttribute="bottom" constant="42" id="gZL-Pu-X4T"/>
+                            <constraint firstItem="7YJ-L6-QhN" firstAttribute="top" secondItem="WBK-8k-fRh" secondAttribute="bottom" constant="89" id="hMg-Qy-aZs"/>
                             <constraint firstItem="NOi-et-orP" firstAttribute="top" secondItem="iOo-Np-AcA" secondAttribute="bottom" constant="10" id="iSb-zX-XQV"/>
+                            <constraint firstItem="d9m-hd-PqN" firstAttribute="top" secondItem="aRD-UV-PCb" secondAttribute="bottom" constant="8" symbolic="YES" id="jhA-cl-l9J"/>
                             <constraint firstItem="v8O-4A-0sO" firstAttribute="baseline" secondItem="fLd-pH-jJz" secondAttribute="baseline" id="jvJ-i2-b0f"/>
                             <constraint firstItem="v8O-4A-0sO" firstAttribute="bottom" secondItem="PXt-Jq-1Sz" secondAttribute="bottom" id="rOF-5f-Yxp"/>
                             <constraint firstItem="NOi-et-orP" firstAttribute="leading" secondItem="J97-fq-aw4" secondAttribute="leading" id="sM6-ie-LkP"/>
+                            <constraint firstItem="fLd-pH-jJz" firstAttribute="top" secondItem="aRD-UV-PCb" secondAttribute="bottom" constant="18" id="sT0-dy-RVc"/>
+                            <constraint firstItem="aRD-UV-PCb" firstAttribute="top" secondItem="D4a-aI-gsZ" secondAttribute="bottom" constant="2" id="tlG-Cd-GDa"/>
+                            <constraint firstItem="Biz-bp-Qwc" firstAttribute="leading" secondItem="5ut-r4-QbG" secondAttribute="leading" id="vUn-4r-UNe"/>
                             <constraint firstItem="iOo-Np-AcA" firstAttribute="trailing" secondItem="Frk-KT-uT1" secondAttribute="trailing" id="wwL-qm-TUk"/>
                             <constraint firstItem="opg-gc-NQG" firstAttribute="top" secondItem="Frk-KT-uT1" secondAttribute="top" id="xnh-qN-y9m"/>
+                            <constraint firstItem="fLd-pH-jJz" firstAttribute="top" secondItem="v8O-4A-0sO" secondAttribute="top" id="y1O-oL-uet"/>
                             <constraint firstItem="D4a-aI-gsZ" firstAttribute="centerY" secondItem="7YJ-L6-QhN" secondAttribute="centerY" id="yvf-DD-B8z"/>
                             <constraint firstItem="q9r-hG-GC0" firstAttribute="top" secondItem="opg-gc-NQG" secondAttribute="bottom" constant="18" id="zJx-Yy-5Qd"/>
-                            <constraint firstItem="aRD-UV-PCb" firstAttribute="top" secondItem="D4a-aI-gsZ" secondAttribute="bottom" constant="17" id="zeu-Iq-N7k"/>
+                            <constraint firstItem="iOo-Np-AcA" firstAttribute="top" secondItem="7YJ-L6-QhN" secondAttribute="bottom" constant="32" id="zbP-V0-MOG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eis-b7-DtX"/>
                     </view>
@@ -224,7 +237,8 @@
                         <outlet property="start" destination="v8O-4A-0sO" id="kAp-Vb-txm"/>
                         <outlet property="stop" destination="PXt-Jq-1Sz" id="L15-u5-wyD"/>
                         <outlet property="teisyutubutton" destination="Frk-KT-uT1" id="CIM-8d-0jO"/>
-                        <outlet property="timerField" destination="rvH-01-GeC" id="TEu-IB-wr9"/>
+                        <outlet property="timerLabel" destination="Biz-bp-Qwc" id="9uX-OT-gSf"/>
+                        <outlet property="timerpicker" destination="d9m-hd-PqN" id="pES-VA-5Ah"/>
                         <outlet property="timerstart" destination="aRD-UV-PCb" id="ycn-na-rjF"/>
                         <outlet property="timerstop" destination="fhE-zv-vTA" id="Pqe-6Y-uBX"/>
                     </connections>
@@ -730,8 +744,7 @@
         <image name="human.jpeg" width="222" height="204"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Yn-8h-DRp"/>
-        <segue reference="fip-bi-VBr"/>
+        <segue reference="zDV-Sd-fyx"/>
         <segue reference="TxE-F7-Vih"/>
     </inferredMetricsTieBreakers>
 </document>
