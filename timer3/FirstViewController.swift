@@ -27,6 +27,8 @@ class FirstViewController: UIViewController {
         
         formatter.dateFormat = "yyyy/MM/dd"
         label.text = formatter.string(from: now)
+        
+        userLabel.text = ""
 
         // Do any additional setup after loading the view.
     }

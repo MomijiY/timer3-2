@@ -17,6 +17,7 @@ class AccountViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
+    
     @IBAction private func didTapSignUpButton() {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
@@ -42,6 +43,12 @@ class AccountViewController: UIViewController {
                 }
             }
             self.showErrorIfNeeded(error)
+        }
+        if (email == "" || password == "" || name == "") {
+            let message = "全てのフォームに記入して下さい。"
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
         }
     }
     
