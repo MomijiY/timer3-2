@@ -10,6 +10,7 @@ pod 'Firebase/Database'
 pod 'Firebase/Core'
 pod 'Firebase/Firestore'
 pod 'Firebase/Auth'
+pod 'Firebase/Storage'
  
   target 'timer3Tests' do
     inherit! :search_paths

@@ -17,6 +17,10 @@ class AccountViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
+    var isFirst = true // 最初の処理かどうか
+    
+    
+    
     
     @IBAction private func didTapSignUpButton() {
         let email = emailTextField.text ?? ""
@@ -35,6 +39,9 @@ class AccountViewController: UIViewController {
                             guard let self = self else { return }
                             if error == nil {
                                 // 仮登録完了画面へ遷移する処理
+                                // サインアップ完了のフラグを保持する
+                                UserDefaults.standard.set(true, forKey: "appSignUpStatusKey")
+                                UserDefaults.standard.synchronize()
                             }
                             self.showErrorIfNeeded(error)
                         }
@@ -42,8 +49,14 @@ class AccountViewController: UIViewController {
                     self.showErrorIfNeeded(error)
                 }
             }
+            if self.isFirst == true {
+               
+            }else {
+               
+            }
             self.showErrorIfNeeded(error)
         }
+        
         if (email == "" || password == "" || name == "") {
             let message = "全てのフォームに記入して下さい。"
             let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -70,7 +83,6 @@ class AccountViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation
