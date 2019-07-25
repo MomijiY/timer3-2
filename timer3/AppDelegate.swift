@@ -17,19 +17,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var nameTextField:String? = nil
     
     func gotoMainStoryBoard(){
-        let flg = false//分岐条件
+//        let isFirst = false//分岐条件
         
-        let storyboard:UIStoryboard = UIStoryboard(name: "Main",bundle:nil)
-        let viewController:UIViewController
-        
-        //表示するビューコントローラーを指定
-        if flg {
-            viewController = storyboard.instantiateViewController(withIdentifier: "tutorial") as UIViewController
-        } else {
-            viewController = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
+        let handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            let storyboard:UIStoryboard = UIStoryboard(name: "Main",bundle:nil)
+            let viewController:UIViewController
+            
+            if Auth.auth().currentUser != nil {
+               viewController = storyboard.instantiateViewController(withIdentifier: "tutorial") as UIViewController
+            } else {
+               viewController = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
+            }
+            self.window?.rootViewController = viewController
         }
         
-        window?.rootViewController = viewController
+       
+        
+        
+        
+//        //表示するビューコントローラーを指定
+//        if isFirst {
+//            viewController = storyboard.instantiateViewController(withIdentifier: "tutorial") as UIViewController
+//        } else {
+//            viewController = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
+//        }
+        
+//        window?.rootViewController = viewController
     }
 
 

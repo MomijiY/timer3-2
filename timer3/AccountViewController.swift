@@ -49,11 +49,6 @@ class AccountViewController: UIViewController {
                     self.showErrorIfNeeded(error)
                 }
             }
-            if self.isFirst == true {
-               
-            }else {
-               
-            }
             self.showErrorIfNeeded(error)
         }
         
@@ -68,7 +63,6 @@ class AccountViewController: UIViewController {
     private func showErrorIfNeeded(_ errorOrNil: Error?) {
         // エラーがなければ何もしません
         guard let error = errorOrNil else { return }
-        
         let message = "エラーが起きました" // ここは後述しますが、とりあえず固定文字列
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
