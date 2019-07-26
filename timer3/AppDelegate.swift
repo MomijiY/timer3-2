@@ -19,46 +19,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func gotoMainStoryBoard(){
 //        let isFirst = false//分岐条件
         
-        let handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            
+        let _ = Auth.auth().addStateDidChangeListener() { ( auth, user) in
             let storyboard:UIStoryboard = UIStoryboard(name: "Main",bundle:nil)
             let viewController:UIViewController
             
             if Auth.auth().currentUser != nil {
-               viewController = storyboard.instantiateViewController(withIdentifier: "tutorial") as UIViewController
+                viewController = storyboard.instantiateViewController(withIdentifier: "tutorial") as UIViewController
             } else {
-               viewController = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
+                viewController = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
             }
             self.window?.rootViewController = viewController
         }
-        
-        gotoMainStoryBoard()
-        FirebaseApp.configure()
-        
-        gotoMainStoryBoard()
-        FirebaseApp.configure()
-        
-       
-        
-        
-        
+    }
+//        let storyboard:UIStoryboard = UIStoryboard(name: "Main",bundle:nil)
+//        let viewController:UIViewController
+//
 //        //表示するビューコントローラーを指定
 //        if isFirst {
-//            viewController = storyboard.instantiateViewController(withIdentifier: "tutorial") as UIViewController
-//        } else {
 //            viewController = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
+//        } else {
+//            viewController = storyboard.instantiateViewController(withIdentifier: "tutorial") as UIViewController
 //        }
-        
+//
 //        window?.rootViewController = viewController
-    }
 
-
+//didFinishLaunchingWithOptionsでエラーが出る。
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-//        gotoMainStoryBoard()
-//        FirebaseApp.configure()
-//
+
+        gotoMainStoryBoard()
+        FirebaseApp.configure()
+
         return true
     }
 

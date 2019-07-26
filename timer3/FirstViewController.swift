@@ -13,8 +13,13 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var label:  UILabel!
     @IBOutlet weak var userLabel: UILabel!
     
+    // ユーザー名
+    var userName: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         label.frame = CGRect(x: 0, y: 30, width: self.view.frame.width, height: 150)
         label.textAlignment = NSTextAlignment.center
@@ -29,6 +34,15 @@ class FirstViewController: UIViewController {
         label.text = formatter.string(from: now)
         // Do any additional setup after loading the view.
         
+        // ユーザー名を表示
+        userLabel.text = userName
+        
+        // ユーザー名を表示
+        if let userName = UserDefaults.standard.string(forKey: "userNameKey") {
+            userLabel.text = userName
+        } else {
+            userLabel.text = "読み込めなかった時"
+        }
     }
     
 

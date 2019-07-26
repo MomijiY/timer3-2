@@ -487,11 +487,13 @@
                                     <navigationItem title="メイン画面" id="lzO-Wr-V6o">
                                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="r0O-nE-dnb">
                                             <connections>
+                                                <action selector="CancelButton:" destination="NRO-Lt-yBe" id="fp0-Ts-Cpa"/>
                                                 <segue destination="AmK-2O-I7M" kind="presentation" id="fip-bi-VBr"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="0u2-hG-1aq">
                                             <connections>
+                                                <action selector="TodoAddButten:" destination="NRO-Lt-yBe" id="eR4-W7-X6m"/>
                                                 <segue destination="LnD-fv-oUE" kind="show" id="5Yn-8h-DRp"/>
                                             </connections>
                                         </barButtonItem>
@@ -513,8 +515,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="NRO-Lt-yBe" id="2IX-GL-0nN"/>
-                                    <outlet property="delegate" destination="NRO-Lt-yBe" id="UIA-al-y5o"/>
+                                    <outlet property="dataSource" destination="NRO-Lt-yBe" id="mAL-4h-rO0"/>
+                                    <outlet property="delegate" destination="NRO-Lt-yBe" id="bJZ-zK-lxX"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -578,13 +580,14 @@
         <!--tutorial-->
         <scene sceneID="9Fb-KX-XfL">
             <objects>
-                <viewController restorationIdentifier="rootViewController" storyboardIdentifier="rootViewController" title="tutorial" id="n6k-p1-yCd" customClass="AccountViewController" customModule="timer3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="tutorial" storyboardIdentifier="tutorial" title="tutorial" id="n6k-p1-yCd" customClass="AccountViewController" customModule="timer3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iwd-ez-gGS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YTC-fl-1ic">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="userNameKey" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YTC-fl-1ic">
                                 <rect key="frame" x="126" y="87" width="208" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="userNameKey"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -840,6 +843,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xKt-GF-NWc"/>
-        <segue reference="tyN-qx-Yge"/>
+        <segue reference="Cma-Ov-fur"/>
     </inferredMetricsTieBreakers>
 </document>
