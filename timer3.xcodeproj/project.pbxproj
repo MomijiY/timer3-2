@@ -21,7 +21,7 @@
 		79D2552222D747CD00325D5F /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D2552122D747CD00325D5F /* AddController.swift */; };
 		79FB7B03224C51CE00F0889A /* haikei.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B02224C51CE00F0889A /* haikei.png */; };
 		79FB7B07224F074900F0889A /* Aleart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B06224F074900F0889A /* Aleart.mp3 */; };
-		79FB7B0E224F255500F0889A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B0C224F255500F0889A /* Main.storyboard */; };
+		79FB7B0E224F255500F0889A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B0C224F255500F0889A /* Main.storyboard */; settings = {ASSET_TAGS = (AccountViewController, ); }; };
 		79FB7B12224F8E1000F0889A /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B11224F8E1000F0889A /* start.mp3 */; };
 		79FB7B14224F916800F0889A /* stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B13224F916800F0889A /* stop.mp3 */; };
 		79FD914F22499E4B0045C2E6 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD914E22499E4B0045C2E6 /* PickerViewController.swift */; };
@@ -281,6 +281,7 @@
 			attributes = {
 				KnownAssetTags = (
 					1,
+					AccountViewController,
 				);
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;

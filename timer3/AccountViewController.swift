@@ -16,11 +16,11 @@ class AccountViewController: UIViewController {
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-    
+
     var isFirst = true // 最初の処理かどうか
     
-    
-    
+
+
     @IBAction private func didTapSignUpButton() {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
@@ -37,38 +37,33 @@ class AccountViewController: UIViewController {
                         user.sendEmailVerification() { [weak self] error in
                             guard let self = self else { return }
                             if error == nil {
+                                // 仮登録完了画面へ遷移する処理
                                 // サインアップ完了のフラグを保持する
                                 UserDefaults.standard.set(true, forKey: "appSignUpStatusKey")
                                 UserDefaults.standard.synchronize()
-                                
-                                // 仮登録完了画面へ遷移する処理
-                                if let vc = UIStoryboard(name: "FirstViewController", bundle: nil).instantiateInitialViewController() as? FirstViewController {
-                                    // FirstViewControllerにuserNameを渡す
-                                    vc.userName = name
-                                    self.navigationController?.pushViewController(vc, animated: true)
-                                }
                             }
                             self.showErrorIfNeeded(error)
                         }
                     }
                     self.showErrorIfNeeded(error)
                 }
+            }
+            self.showErrorIfNeeded(error)
+        }
                 // サインアップ完了のフラグを保持する
                 UserDefaults.standard.set(true, forKey: "appSignUpStatusKey")
                 // ユーザー名を保存する
                 UserDefaults.standard.set(name, forKey: "userNameKey")
                 UserDefaults.standard.synchronize()
-            }
-        
         if (email == "" || password == "" || name == "") {
             let message = "全てのフォームに記入して下さい。"
             let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-            
-    }
-    }
+            }
+
+    
     private func showErrorIfNeeded(_ errorOrNil: Error?) {
         // エラーがなければ何もしません
         guard let error = errorOrNil else { return }
@@ -77,11 +72,11 @@ class AccountViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
 

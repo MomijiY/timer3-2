@@ -10,6 +10,8 @@ import UIKit
 
 //classの継承を追加
 class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+
+    @IBOutlet weak var todoTableViewCell: UITableViewCell!
     
     //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -23,9 +25,16 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
         //変数の中身を作る
         TodoCell.textLabel!.text = TodoKobetsunonakami[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) // Storyboard上のテーブルセルのIdentifierと一致
+        cell.textLabel!.text = display[indexPath.row]
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator // ここで「>」ボタンを設定
+        
         //戻り値の設定（表示する中身)
         return TodoCell
     }
+    
+    let display:Array = ["cell1", "cell2", "cell3"]
     
     
     //最初からあるコード

@@ -35,12 +35,10 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //追加画面で入力した内容を取得する
-                if UserDefaults.standard.object(forKey: "TodoList") != nil {
-                    todoKobetsunonakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
-                }
+       
         
         // if let の意味がなかったので修正
+        //追加画面で入力した内容を取得する
         if let todos = UserDefaults.standard.object(forKey: "TodoList") as? [String] {
             todoKobetsunonakami = todos
         }
@@ -98,9 +96,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     //スワイプしたセルを削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            // itemArrayが使われていないので Index out of range になってクラッシュ
+            
             //itemArray.remove(at: indexPath.row)
             todoKobetsunonakami.remove(at: indexPath.row)
+            
+            // todokebetsunonakamiが更新されたので保存
+            UserDefaults.standard.set(todoKobetsunonakami, forKey: "TodoList" )
+            
+            
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
         }
     }
