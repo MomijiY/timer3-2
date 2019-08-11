@@ -428,6 +428,7 @@ class RemindViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 //
     
     @IBAction func manualfield(_ sender: Any) {     //ページ数のfield
+        manualfield.text = "\(manualfield.text)ページ"
     }
     
     @IBOutlet weak var manuallabel1: UILabel!   //ページ数

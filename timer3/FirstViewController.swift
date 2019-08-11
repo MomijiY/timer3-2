@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class FirstViewController: UIViewController, UITextFieldDelegate{
     
+    var window: UIWindow?
+    
     @IBOutlet weak var label:  UILabel!
     @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var testLabel: UILabel!
-    
+
     @IBOutlet weak var haikei: UILabel!
     
     @IBOutlet weak var testdatefield: UITextField!
@@ -37,8 +39,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var kugire3: UILabel!
     
     @IBOutlet weak var daytesbtn: UIButton!
-    
-    @IBOutlet weak var atoteslbl: UILabel!
+
     
     @IBOutlet weak var kugire4: UILabel!
     
@@ -71,7 +72,6 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         stymemory.isHidden = true
         kugire3.isHidden = true
         daytesbtn.isHidden = true
-        atoteslbl.isHidden = true
         kugire4.isHidden = true
         mokuhyou1.isHidden = false
         checkcomment.isHidden = true
@@ -97,7 +97,6 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         stymemory.isHidden = false
         kugire3.isHidden = false
         daytesbtn.isHidden = false
-        atoteslbl.isHidden = false
         kugire4.isHidden = false
         mokuhyou1.isHidden = true
         checkcomment.isHidden = false
@@ -130,7 +129,6 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         stymemory.isHidden = false
         kugire3.isHidden = false
         daytesbtn.isHidden = false
-        atoteslbl.isHidden = false
         kugire4.isHidden = false
         mokuhyou1.isHidden = true
         checkcomment.isHidden = false
@@ -168,6 +166,9 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+            super.viewDidLoad()
+            self.navigationController?.navigationBar.isHidden = true
+
         testdatePicker.datePickerMode = UIDatePicker.Mode.date
         testdatePicker.timeZone = NSTimeZone.local
         testdatePicker.locale = Locale.current
@@ -223,7 +224,6 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         stymemory.isHidden = false
         kugire3.isHidden = false
         daytesbtn.isHidden = false
-        atoteslbl.isHidden = false
         kugire4.isHidden = false
         mokuhyou1.isHidden = true
         checkcomment.isHidden = false
@@ -259,6 +259,32 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         } else {
             userLabel.text = "読み込めなかった時"
         }
+        
+//        if userName == "" {
+//
+//                let _ = Auth.auth().addStateDidChangeListener() { ( auth, user) in
+//                let storyboard:UIStoryboard = UIStoryboard(name: "Main",bundle:nil)
+//                let viewController:UIViewController
+//
+//                if Auth.auth().currentUser != nil {
+//                    viewController = storyboard.instantiateViewController(withIdentifier: "AccountViewController") as UIViewController
+//                } else {
+//                    viewController = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
+//                }
+//                    self.window?.rootViewController = viewController
+//                }
+//        }
+        // ルートはサインアップのViewController
+        let rootVC = UINavigationController(rootViewController: UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() ?? UIViewController()
+        )
+        
+        // サインアップ済みならホームのViewControllerを表示
+        if UserDefaults.standard.bool(forKey: "appSignUpStatusKey") {
+            rootVC.pushViewController(UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() ?? UIViewController(), animated: false)
+        }
+        
+        window?.rootViewController = rootVC
+        window?.makeKeyAndVisible()
         
         
 //        let aDay = now

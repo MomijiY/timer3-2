@@ -12,6 +12,8 @@ import Firebase
 class comentViewController: UIViewController {
     var database: Firestore!
     
+    var saveData: UserDefaults = UserDefaults.standard
+    
     @IBOutlet weak var comentLbl: UILabel!
     
     @IBOutlet weak var reroadbtn: UIButton!
@@ -34,6 +36,8 @@ class comentViewController: UIViewController {
             
             self.comentLbl.text = data["text"] as? String
         }
+        comentLbl.text = saveData.object(forKey: "coment") as? String
+        saveData.set(comentLbl.text, forKey: "coment")
     }
     
 

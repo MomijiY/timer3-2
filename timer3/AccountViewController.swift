@@ -18,8 +18,6 @@ class AccountViewController: UIViewController {
     @IBOutlet private weak var passwordTextField: UITextField!
 
     var isFirst = true // 最初の処理かどうか
-    
-
 
     @IBAction private func didTapSignUpButton() {
         let email = emailTextField.text ?? ""
@@ -74,10 +72,10 @@ class AccountViewController: UIViewController {
     }
 
 
+    // AccountViewControllerの想定です
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = true
     }
 
     /*

@@ -48,8 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // ルートはサインアップのViewController
-        let rootVC = UINavigationController(rootViewController: UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() ?? UIViewController()
-)
+       let rootVC = UINavigationController(rootViewController: UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() ?? UIViewController())
         
         // サインアップ済みならホームのViewControllerを表示
         if UserDefaults.standard.bool(forKey: "appSignUpStatusKey") {
