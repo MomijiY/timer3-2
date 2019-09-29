@@ -16,51 +16,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var nameTextField:String? = nil
     
-//    func gotoMainStoryBoard(){
-////        let isFirst = false//分岐条件
-//
-//        let _ = Auth.auth().addStateDidChangeListener() { ( auth, user) in
-//            let storyboard:UIStoryboard = UIStoryboard(name: "Main",bundle:nil)
-//            let viewController:UIViewController
-//
-//            if Auth.auth().currentUser != nil {
-//                viewController = storyboard.instantiateViewController(withIdentifier: "tutorial") as UIViewController
-//            } else {
-//                viewController = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
-//            }
-//            self.window?.rootViewController = viewController
-//        }
-//    }
-//        let storyboard:UIStoryboard = UIStoryboard(name: "Main",bundle:nil)
-//        let viewController:UIViewController
-//
-//        //表示するビューコントローラーを指定
-//        if isFirst {
-//            viewController = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
-//        } else {
-//            viewController = storyboard.instantiateViewController(withIdentifier: "tutorial") as UIViewController
-//        }
-//
-//        window?.rootViewController = viewController
+
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // MARK: RootViewController
+        
+        
         // ルートはサインアップのViewController
-       let rootVC = UINavigationController(rootViewController: UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() ?? UIViewController())
+//        var rootVC = UINavigationController(rootViewController: UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() ?? UIViewController())
+        
         
         // サインアップ済みならホームのViewControllerを表示
-        if UserDefaults.standard.bool(forKey: "appSignUpStatusKey") {
-            rootVC.pushViewController(UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() ?? UIViewController(), animated: false)
+        if UserDefaults.standard.object(forKey: "appSignUpStatusKey") != nil{
+            if UserDefaults.standard.bool(forKey: "appSignUpStatusKey") {
+                window = UIWindow(frame: UIScreen.main.bounds)
+                var rootVC:UIViewController
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                rootVC = storyboard.instantiateViewController(withIdentifier: "main")
+                window?.rootViewController = rootVC
+                window?.makeKeyAndVisible()
+            }
         }
         
-        window?.rootViewController = rootVC
-        window?.makeKeyAndVisible()
-
-//        gotoMainStoryBoard()
         FirebaseApp.configure()
-
+        
         return true
     }
 

@@ -20,13 +20,13 @@
 		79C5DE2322B510CB003003E1 /* human.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 79C5DE2222B510CA003003E1 /* human.jpeg */; };
 		79D2552022D6168300325D5F /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D2551F22D6168300325D5F /* TodoViewController.swift */; };
 		79D2552222D747CD00325D5F /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D2552122D747CD00325D5F /* AddController.swift */; };
-		79FB7B03224C51CE00F0889A /* haikei.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B02224C51CE00F0889A /* haikei.png */; };
 		79FB7B07224F074900F0889A /* Aleart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B06224F074900F0889A /* Aleart.mp3 */; };
 		79FB7B0E224F255500F0889A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B0C224F255500F0889A /* Main.storyboard */; settings = {ASSET_TAGS = (AccountViewController, ); }; };
 		79FB7B12224F8E1000F0889A /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B11224F8E1000F0889A /* start.mp3 */; };
 		79FB7B14224F916800F0889A /* stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79FB7B13224F916800F0889A /* stop.mp3 */; };
 		79FD914F22499E4B0045C2E6 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD914E22499E4B0045C2E6 /* PickerViewController.swift */; };
-		79FD9151224A30940045C2E6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FD9150224A30940045C2E6 /* icon.png */; };
+		79FF68FC23121F7B007BEA77 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FF68FB23121F7B007BEA77 /* icon.png */; };
+		79FF68FE231222D3007BEA77 /* first.001.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FF68FD231222D3007BEA77 /* first.001.png */; };
 		79FF9982221183A000C912A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FF9981221183A000C912A4 /* AppDelegate.swift */; };
 		79FF9984221183A000C912A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FF9983221183A000C912A4 /* ViewController.swift */; };
 		79FF9989221183A000C912A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FF9988221183A000C912A4 /* Assets.xcassets */; };
@@ -70,13 +70,13 @@
 		79C5DE2222B510CA003003E1 /* human.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = human.jpeg; sourceTree = "<group>"; };
 		79D2551F22D6168300325D5F /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		79D2552122D747CD00325D5F /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
-		79FB7B02224C51CE00F0889A /* haikei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haikei.png; sourceTree = "<group>"; };
 		79FB7B06224F074900F0889A /* Aleart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Aleart.mp3; sourceTree = "<group>"; };
 		79FB7B0D224F255500F0889A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		79FB7B11224F8E1000F0889A /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
 		79FB7B13224F916800F0889A /* stop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stop.mp3; sourceTree = "<group>"; };
 		79FD914E22499E4B0045C2E6 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
-		79FD9150224A30940045C2E6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		79FF68FB23121F7B007BEA77 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../icon2/icon.png; sourceTree = "<group>"; };
+		79FF68FD231222D3007BEA77 /* first.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = first.001.png; path = ../../first/first.001.png; sourceTree = "<group>"; };
 		79FF997E221183A000C912A4 /* timer3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timer3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FF9981221183A000C912A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79FF9983221183A000C912A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,9 +158,9 @@
 		79FF9980221183A000C912A4 /* timer3 */ = {
 			isa = PBXGroup;
 			children = (
-				79FD9150224A30940045C2E6 /* icon.png */,
-				79FB7B02224C51CE00F0889A /* haikei.png */,
+				79FF68FD231222D3007BEA77 /* first.001.png */,
 				79C5DE2222B510CA003003E1 /* human.jpeg */,
+				79FF68FB23121F7B007BEA77 /* icon.png */,
 				79FB7B06224F074900F0889A /* Aleart.mp3 */,
 				79FB7B11224F8E1000F0889A /* start.mp3 */,
 				79FB7B13224F916800F0889A /* stop.mp3 */,
@@ -330,12 +330,12 @@
 			files = (
 				79A44DBC22B601F7005486AC /* GoogleService-Info.plist in Resources */,
 				79C5DE2322B510CB003003E1 /* human.jpeg in Resources */,
+				79FF68FC23121F7B007BEA77 /* icon.png in Resources */,
 				79FB7B0E224F255500F0889A /* Main.storyboard in Resources */,
-				79FD9151224A30940045C2E6 /* icon.png in Resources */,
 				79FB7B14224F916800F0889A /* stop.mp3 in Resources */,
 				79FF998C221183A000C912A4 /* LaunchScreen.storyboard in Resources */,
-				79FB7B03224C51CE00F0889A /* haikei.png in Resources */,
 				79FB7B12224F8E1000F0889A /* start.mp3 in Resources */,
+				79FF68FE231222D3007BEA77 /* first.001.png in Resources */,
 				79FF9989221183A000C912A4 /* Assets.xcassets in Resources */,
 				79FB7B07224F074900F0889A /* Aleart.mp3 in Resources */,
 			);
@@ -638,7 +638,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG32J57MBX;
 				INFOPLIST_FILE = timer3/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -658,7 +658,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG32J57MBX;
 				INFOPLIST_FILE = timer3/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

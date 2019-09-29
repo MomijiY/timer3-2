@@ -8,125 +8,242 @@
 
 import UIKit
 
-class testsViewController: UIViewController, UITextFieldDelegate {
+class testsViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     
-    @IBOutlet weak var testdateField: UITextField!
-    @IBOutlet weak var titleTextField1: UITextField!
-    @IBOutlet weak var titleTextField2: UITextField!
-    @IBOutlet weak var titleTextField3: UITextField!
-    @IBOutlet weak var testdatelabel: UILabel!
+    var scrollView = UIScrollView()
+
     
-    func getToday(format:String = "dd") -> String {
-        let now = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: now as Date)
-    }
+    @IBOutlet weak var testdatefield: UITextField!
+
+    @IBOutlet weak var testtitle: UILabel!
+
+    @IBOutlet weak var backbtn: UIButton!
+
+    @IBOutlet weak var mokuhyou1: UITextField!
     
-    var saveData: UserDefaults = UserDefaults.standard
+    @IBOutlet weak var mokuhyou2: UITextField!
+
+    @IBOutlet weak var mokuhyou3: UITextField!
+        
+    @IBOutlet weak var testnext: UIButton!
+
     var testdatePicker: UIDatePicker = UIDatePicker()
     var testdatePicker2: UIDatePicker = UIDatePicker()
+    var saveData: UserDefaults = UserDefaults.standard
 
-    @objc func done_timer() {
-        testdateField.endEditing(true)
-        
-        let formtter = DateFormatter()
-        
-        formtter.dateFormat = "yyyy年MM月dd日"
-        
-        testdateField.text = "\(formtter.string(from: testdatePicker.date))"
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        print("test")
+        
+        self.scrollView.delegate = self
+        self.scrollView.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+
+        // scrollViewを設置
+        self.scrollView.addSubview(self.mokuhyou2)
+        self.scrollView.addSubview(self.mokuhyou3)
+
+        self.view.addSubview(self.scrollView)
+
+        self.view.sendSubviewToBack(scrollView)
+
+
         testdatePicker.datePickerMode = UIDatePicker.Mode.date
         testdatePicker.timeZone = NSTimeZone.local
         testdatePicker.locale = Locale.current
-        testdateField.inputView = testdatePicker
-        
+        testdatefield.inputView = testdatePicker
+
         testdatePicker2.datePickerMode = UIDatePicker.Mode.date
         testdatePicker2.timeZone = NSTimeZone.local
         testdatePicker2.locale = Locale.current
         
-        
-        testdateField.text = saveData.object(forKey: "testdate") as? String
-        
-        titleTextField1.text = saveData.object(forKey: "title1") as? String
-        titleTextField2.text = saveData.object(forKey: "title2") as? String
-        titleTextField3.text = saveData.object(forKey: "title3") as? String
-        
+
+
+
+        testdatefield.text = saveData.object(forKey: "testdate") as? String
+        mokuhyou1.text = saveData.object(forKey: "title1") as? String
+        mokuhyou2.text = saveData.object(forKey: "title2") as? String
+        mokuhyou3.text = saveData.object(forKey: "title3") as? String
         // 決定バーの生成
         let toolbar_date = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         toolbar_date.setItems([spacelItem, doneItem], animated: true)
-        
-        
-        
-        testdateField.inputView = testdatePicker
-        testdateField.inputAccessoryView = toolbar_date
-        
-       
 
-        testdateField.delegate = self
-        
-        titleTextField1.delegate = self
-        titleTextField2.delegate = self
-        titleTextField3.delegate = self
-        
+
+
+        testdatefield.inputView = testdatePicker
+        testdatefield.inputAccessoryView = toolbar_date
+
+
+
+        testdatefield.delegate = self
+
+        mokuhyou1.delegate = self
+        mokuhyou2.delegate = self
+        mokuhyou3.delegate = self
+
+
+
         let toolBar =  UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-        
+
         toolBar.barStyle = UIBarStyle.default
-        
+
         toolBar.sizeToFit()
-        
+
         let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
-        
+
         let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(testsViewController.commitButtonTapped))
-        
+
         toolBar.items = [spacer, commitButton]
-        
-        
+
+
+        // textfieldにplaceholderを設置
+        self.mokuhyou1.placeholder = "目標１"
+        self.mokuhyou2.placeholder = "目標２"
+        self.mokuhyou3.placeholder = "目標３"
+        self.testdatefield.placeholder = "テストの日程"
+
+
+        // textfieldの枠を表示する.
+        self.mokuhyou1.borderStyle = UITextField.BorderStyle.roundedRect
+        self.mokuhyou2.borderStyle = UITextField.BorderStyle.roundedRect
+        self.mokuhyou3.borderStyle = UITextField.BorderStyle.roundedRect
+
+
+    }
+
     
+    @objc func keyBoardWillHide(notification: Notification) {
+        
+        
     }
     
+    
+    
+    
+    @IBAction func testnextac(_ sender: Any) {
+
+        saveData.set(testdatefield.text, forKey: "testdate")
+
+        saveData.set(mokuhyou1.text, forKey: "title1")
+        saveData.set(mokuhyou2.text, forKey: "title2")
+        saveData.set(mokuhyou3.text, forKey: "title3")
+    }
+
+//    @objc func done_timer() {
+//        testdatefield.endEditing(true)
+//
+//        let formtter = DateFormatter()
+//
+//        formtter.dateFormat = "yyyy年MM月dd日"
+//
+//        testdatefield.text = "\(formtter.string(from: testdatePicker.date))"
+//    }
+
     @objc func done() {
-        testdateField.endEditing(true)
-        
+        testdatefield.endEditing(true)
+
         let formatter = DateFormatter()
-        
+
         formatter.dateFormat = "yyyy年MM月dd日"
-        
-        testdateField.text = "\(formatter.string(from: testdatePicker.date))"
+
+        testdatefield.text = "\(formatter.string(from: testdatePicker.date))"
     }
-    
-    
-    
+
     @objc func commitButtonTapped() {
         self.view.endEditing(true)
     }
     
-    @IBAction func MemorySave() {
-        saveData.set(testdateField.text, forKey: "testdate")
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        mokuhyou1.resignFirstResponder()
+        mokuhyou2.resignFirstResponder()
+        mokuhyou3.resignFirstResponder()
         
-        saveData.set(titleTextField1.text, forKey: "title1")
-        saveData.set(titleTextField2.text, forKey: "title2")
-        saveData.set(titleTextField3.text, forKey: "title3")
-//        let alert: UIAlertController = UIAlertController(title: "OK", message: "メモの保存が完了しました", preferredStyle: .alert)
-//
-//        alert.addAction(
-//            UIAlertAction(title: "OK", style: .default, handler: { action in
-//
-//                self.navigationController?.popViewController(animated: true)
-//            }
-//            )
-//        )
-//        present(alert, animated: true, completion: nil)
+        return true
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return  true
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Notificationの発行
+        self.configureObserver()
     }
+
+    
+    
+    // Notificationを設定
+    func configureObserver() {
+
+        let notification = NotificationCenter.default
+
+        notification.addObserver(
+            self,
+            selector: #selector(self.keyboardWillShow(notification:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+
+        notification.addObserver(
+            self,
+            selector: #selector(self.keyboardWillHide(notification:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+
+    // Notificationを削除
+    func removeObserver() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    var selectedTextField: UITextField?
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        selectedTextField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        selectedTextField = nil
+    }
+    
+    // キーボードが現れたときにviewをずらす
+    @objc func keyboardWillShow(notification: Notification?) {
+        guard let selectedTextField = selectedTextField else { return }
+        if selectedTextField == mokuhyou2 {
+            let rect = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+            let duration: TimeInterval? = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+            UIView.animate(withDuration: duration!) {
+                self.view.transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
+            }
+        }
+        if selectedTextField == mokuhyou3 {
+            let rect = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+            let duration: TimeInterval? = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+            UIView.animate(withDuration: duration!) {
+                self.view.transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
+            }
+        }
+    }
+    
+    
+
+    // キーボードが現れたときにviewをずらす
+//    @objc func keyboardWillShow(notification: Notification?) {
+//
+//    }
+
+    // キーボードが消えたときにviewを戻す
+    @objc func keyboardWillHide(notification: Notification?) {
+        let duration: TimeInterval? = notification?.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Double
+        UIView.animate(withDuration: duration!) {
+            self.view.transform = CGAffineTransform.identity
+        }
+    }
+
+
+
 }

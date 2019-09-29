@@ -10,7 +10,8 @@ import UIKit
 
 //変数の設置
 var TodoKobetsunonakami = [String]()
-class AddController: UIViewController {
+
+class AddController: UIViewController, UITextFieldDelegate {
         //テキストフィールドの設定
         @IBOutlet weak var TodoTextField: UITextField!
         
@@ -27,10 +28,16 @@ class AddController: UIViewController {
         //最初からあるコード
         override func viewDidLoad() {
             super.viewDidLoad()
+            self.TodoTextField.delegate = self
         }
         
         //最初からあるコード
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
         }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        TodoTextField.resignFirstResponder()
+        return true
+    }
     }

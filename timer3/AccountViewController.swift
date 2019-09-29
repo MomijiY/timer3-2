@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class AccountViewController: UIViewController {
+class AccountViewController: UIViewController, UITextFieldDelegate  {
     var acount: FirebaseApp!
     
     @IBOutlet private weak var nameTextField: UITextField!
@@ -70,12 +70,22 @@ class AccountViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
+
 
 
     // AccountViewControllerの想定です
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
+        self.nameTextField.delegate = self
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
     /*

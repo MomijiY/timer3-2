@@ -9,20 +9,19 @@
 import UIKit
 import Firebase
 
-class FirstViewController: UIViewController, UITextFieldDelegate{
+class FirstViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate{
     
     var window: UIWindow?
     
     @IBOutlet weak var label:  UILabel!
-    @IBOutlet weak var userLabel: UILabel!
-
+    
     @IBOutlet weak var haikei: UILabel!
     
-    @IBOutlet weak var testdatefield: UITextField!
+    
     
     @IBOutlet weak var daylabel: UILabel!
     
-    @IBOutlet weak var testtitle: UILabel!
+    
     
     @IBOutlet weak var userlabel: UILabel!
     
@@ -43,102 +42,26 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var kugire4: UILabel!
     
-    @IBOutlet weak var mokuhyou1: UITextField!
+
     
     @IBOutlet weak var checkcomment: UIButton!
     
-    @IBOutlet weak var backbtn: UIButton!
     
-    @IBOutlet weak var testmokuhyoulbl: UILabel!
     
-    @IBOutlet weak var mokuhyou2: UITextField!
+
+ 
     
-    @IBOutlet weak var mokuhyou3: UITextField!
     
-    @IBOutlet weak var testnext: UIButton!
+ 
     
     
     
-    @IBAction func daytesac(_ sender: Any) {
-        haikei.isHidden = true
-        testdatefield.isHidden = false
-        daylabel.isHidden = true
-        testtitle.isHidden = false
-        userlabel.isHidden = true
-        newinfo.isHidden = true
-        kugire1.isHidden = true
-        todolist.isHidden = true
-        kugire2.isHidden = true
-        stymemory.isHidden = true
-        kugire3.isHidden = true
-        daytesbtn.isHidden = true
-        kugire4.isHidden = true
-        mokuhyou1.isHidden = false
-        checkcomment.isHidden = true
-        backbtn.isHidden = false
-        testmokuhyoulbl.isHidden = false
-        mokuhyou2.isHidden = false
-        mokuhyou3.isHidden = false
-        testnext.isHidden = false
-    }
+ 
     
     
-    
-    @IBAction func backbtnac(_ sender: Any) {
-        haikei.isHidden = false
-        testdatefield.isHidden = true
-        daylabel.isHidden = false
-        testtitle.isHidden = true
-        userlabel.isHidden = false
-        newinfo.isHidden = false
-        kugire1.isHidden = false
-        todolist.isHidden = false
-        kugire2.isHidden = false
-        stymemory.isHidden = false
-        kugire3.isHidden = false
-        daytesbtn.isHidden = false
-        kugire4.isHidden = false
-        mokuhyou1.isHidden = true
-        checkcomment.isHidden = false
-        backbtn.isHidden = true
-        testmokuhyoulbl.isHidden = true
-        mokuhyou2.isHidden = true
-        mokuhyou3.isHidden = true
-        testnext.isHidden = true
-    }
-    
-    
-    
-    @IBAction func testnextac(_ sender: Any) {
+ 
         
-        saveData.set(testdatefield.text, forKey: "testdate")
-        
-        saveData.set(mokuhyou1.text, forKey: "title1")
-        saveData.set(mokuhyou2.text, forKey: "title2")
-        saveData.set(mokuhyou3.text, forKey: "title3")
-        
-        haikei.isHidden = false
-        testdatefield.isHidden = true
-        daylabel.isHidden = false
-        testtitle.isHidden = true
-        userlabel.isHidden = false
-        newinfo.isHidden = false
-        kugire1.isHidden = false
-        todolist.isHidden = false
-        kugire2.isHidden = false
-        stymemory.isHidden = false
-        kugire3.isHidden = false
-        daytesbtn.isHidden = false
-        kugire4.isHidden = false
-        mokuhyou1.isHidden = true
-        checkcomment.isHidden = false
-        backbtn.isHidden = true
-        testmokuhyoulbl.isHidden = true
-        mokuhyou2.isHidden = true
-        mokuhyou3.isHidden = true
-        testnext.isHidden = true
-    }
-    
+  
     func getToday(format:String = "dd") -> String {
         let now = Date()
         let formatter = DateFormatter()
@@ -147,18 +70,9 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
     }
     
     var saveData: UserDefaults = UserDefaults.standard
-    var testdatePicker: UIDatePicker = UIDatePicker()
-    var testdatePicker2: UIDatePicker = UIDatePicker()
+ 
     
-    @objc func done_timer() {
-        testdatefield.endEditing(true)
-        
-        let formtter = DateFormatter()
-        
-        formtter.dateFormat = "yyyy年MM月dd日"
-        
-        testdatefield.text = "\(formtter.string(from: testdatePicker.date))"
-    }
+
     
     // ユーザー名
     var userName: String = ""
@@ -166,72 +80,13 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            super.viewDidLoad()
+        
+        
+    
+        
+        
+        
             self.navigationController?.navigationBar.isHidden = true
-
-        testdatePicker.datePickerMode = UIDatePicker.Mode.date
-        testdatePicker.timeZone = NSTimeZone.local
-        testdatePicker.locale = Locale.current
-        testdatefield.inputView = testdatePicker
-        
-        testdatePicker2.datePickerMode = UIDatePicker.Mode.date
-        testdatePicker2.timeZone = NSTimeZone.local
-        testdatePicker2.locale = Locale.current
-        
-        
-        testdatefield.text = saveData.object(forKey: "testdate") as? String
-        
-        // 決定バーの生成
-        let toolbar_date = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
-        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-        toolbar_date.setItems([spacelItem, doneItem], animated: true)
-        
-        
-        
-        testdatefield.inputView = testdatePicker
-        testdatefield.inputAccessoryView = toolbar_date
-        
-        
-        
-        testdatefield.delegate = self
-        
-        mokuhyou1.delegate = self
-        mokuhyou2.delegate = self
-        mokuhyou3.delegate = self
-        
-        let toolBar =  UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-        
-        toolBar.barStyle = UIBarStyle.default
-        
-        toolBar.sizeToFit()
-        
-        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
-        
-        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(testsViewController.commitButtonTapped))
-        
-        toolBar.items = [spacer, commitButton]
-        
-        haikei.isHidden = false
-        testdatefield.isHidden = true
-        daylabel.isHidden = false
-        testtitle.isHidden = true
-        userlabel.isHidden = false
-        newinfo.isHidden = false
-        kugire1.isHidden = false
-        todolist.isHidden = false
-        kugire2.isHidden = false
-        stymemory.isHidden = false
-        kugire3.isHidden = false
-        daytesbtn.isHidden = false
-        kugire4.isHidden = false
-        mokuhyou1.isHidden = true
-        checkcomment.isHidden = false
-        backbtn.isHidden = true
-        testmokuhyoulbl.isHidden = true
-        mokuhyou2.isHidden = true
-        mokuhyou3.isHidden = true
-        testnext.isHidden = true
         
         label.frame = CGRect(x: 0, y: 30, width: self.view.frame.width, height: 150)
         label.textAlignment = NSTextAlignment.center
@@ -251,14 +106,21 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         // Do any additional setup after loading the view.
         
         // ユーザー名を表示
-        userLabel.text = userName
+        userlabel.text = userName
         
         // ユーザー名を表示
         if let userName = UserDefaults.standard.string(forKey: "userNameKey") {
-            userLabel.text = "\(userName)さんこんにちは。"
+            userlabel.text = "\(userName)さんこんにちは。"
         } else {
-            userLabel.text = "読み込めなかった時"
+            userlabel.text = "読み込めなかった時"
         }
+        
+  
+        
+//        // UITextFieldの表示する位置を設定する.
+//        self.mokuhyou1.frame = CGRect(x: 100,y: 700,width: 200,height: 30)
+//        self.mokuhyou2.frame = CGRect(x: 100,y: 700,width: 200,height: 30)
+//        self.mokuhyou3.frame = CGRect(x: 100,y: 700,width: 200,height: 30)
         
 //        if userName == "" {
 //
@@ -308,21 +170,13 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
 //        testLabel.text = "テストまであと\(floor(decimal2) / 10)日"
     }
     
-    @objc func done() {
-        testdatefield.endEditing(true)
-        
-        let formatter = DateFormatter()
-        
-        formatter.dateFormat = "yyyy年MM月dd日"
-        
-        testdatefield.text = "\(formatter.string(from: testdatePicker.date))"
-    }
+    
+    
+
     
     
     
-    @objc func commitButtonTapped() {
-        self.view.endEditing(true)
-    }
+  
     
 
     /*
@@ -339,8 +193,30 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         textField.resignFirstResponder()
         return  true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
 
+        
+    
+    }
+    
+    
+
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    
 }
+
+
 extension Date {
     func differenceInDay(_ date: Date) -> Int {
         let cal = Calendar(identifier: .gregorian)

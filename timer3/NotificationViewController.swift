@@ -55,14 +55,14 @@ class NotificationViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     @IBAction func seepastntf() {
- 
-        }
         
-        //セルの編集許可
-        func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
-        {
-            return true
-        }
+    }
+    
+    //セルの編集許可
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
     
     @IBAction func btnLook() {
         let alert: UIAlertController = UIAlertController(title: "OK", message: "見ましたボタンを押す", preferredStyle: .alert)
@@ -72,48 +72,58 @@ class NotificationViewController: UIViewController,UITableViewDelegate,UITableVi
                 
                 self.navigationController?.popViewController(animated: true)
             }
+            )
         )
-        )
-    present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func kousinBtn() {
-        
-        //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            //戻り値の設定(表示するcell数)
-            return pastnotification.count
-        }
-        
-        //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let pastcell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "pastnotification", for: indexPath)
-            
-            pastcell.textLabel?.text = ntfLabel.text
-            pastcell.textLabel?.numberOfLines=0
-            
-            
-            //入力したテキストを配列に格納
-            pastnotification.append(ntfLabel.text!)
-            //セルをリロード
-            tableView.reloadData()
-            
-            
-        database.collection("teacher_data").document("example").getDocument { (snap, error) in
+        database.collection("teacher_data").document("noti").getDocument { (snap, error) in
             if let error = error {
                 fatalError("\(error)")
                 
             }
             guard let data = snap?.data() else { return }
-            print(data["text"]!)
+            print(data["noti"]!)
             
-
-            self.ntfLabel.text = data["text"] as? String
+            
+            self.ntfLabel.text = data["noti"] as? String
+        }
+        //        //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
+        //        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //            //戻り値の設定(表示するcell数)
+        //            return pastnotification.count
+        //        }
+        //
+        //        //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
+        //        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //            let pastcell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "pastnotification", for: indexPath)
+        //
+        //            pastcell.textLabel?.text = ntfLabel.text
+        //            pastcell.textLabel?.numberOfLines=0
+        //
+        //
+        //            //入力したテキストを配列に格納
+        //            pastnotification.append(ntfLabel.text!)
+        //            //セルをリロード
+        //            tableView.reloadData()
+        //
+        //
+        //            database.collection("teacher_data").document("noti").getDocument { (snap, error) in
+        //                if let error = error {
+        //                    fatalError("\(error)")
+        //
+        //                }
+        //                guard let data = snap?.data() else { return }
+        //                print(data["noti"]!)
+        //
+        //
+        //                self.ntfLabel.text = data["noti"] as? String
+        //            }
+        //            return pastcell
+        //
+        //        }
+        
     }
-            return pastcell
-
-}
- 
-}
-
+    
 }
